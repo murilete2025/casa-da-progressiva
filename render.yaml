@@ -1,21 +1,30 @@
-
 services:
   - type: web
     name: casa-da-progressiva
     env: node
     plan: free
-    buildCommand: "npm install --prefix backend"
+    buildCommand: "npm install --prefix backend && node backend/migrate.js"
     startCommand: "npm start --prefix backend"
     envVars:
       - key: NODE_VERSION
-        value: 20.10.0
+        value: 20
       - key: SUPABASE_URL
-        value: "" # Preencha no painel do Render
+        sync: false
       - key: SUPABASE_KEY
-        value: "" # Preencha no painel do Render
+        sync: false
       - key: DATABASE_URL
-        value: "" # Preencha no painel do Render
+        sync: false
       - key: JWT_SECRET
         generateValue: true
-      - key: PORT
-        value: 10000
+      - key: MP_PUBLIC_KEY
+        sync: false
+      - key: MP_ACCESS_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        fromContext: RENDER_EXTERNAL_URL
+      - key: BACKEND_URL
+        fromContext: RENDER_EXTERNAL_URL
+      - key: NODE_ENV
+        value: production
