@@ -607,7 +607,9 @@ async function patchProductPage() {
     
     // Preço Original
     const oldPriceEl = document.querySelector('.price .old, .old-price');
-    if (oldPriceEl && product.originalPrice) oldPriceEl.innerHTML = `R$ ${product.originalPrice}`;
+    if (oldPriceEl && (product.original_price || product.originalPrice)) {
+      oldPriceEl.innerHTML = `R$ ${product.original_price || product.originalPrice}`;
+    }
 
     // Imagens
     const mainImg = document.querySelector('.product-gallery img:first-child, .product-image img, .main-image img, .hero-image-inner img');
@@ -667,8 +669,8 @@ async function patchProductPage() {
         pricingCards.style.justifyContent = 'center';
         pricingCards.style.flexWrap = 'wrap';
         pricingCards.style.gap = '24px';
-      } else if (pricingCards.children.length === 0) {
-        // Fallback apenas se a seção estiver vazia no HTML original
+      } else {
+        // Se não houver ofertas específicas, mostramos o produto principal como uma oferta única
         pricingCards.innerHTML = `
         <div class="card featured" style="width: 100%; max-width: 400px; margin: 0 auto;">
           <div class="card-top">
@@ -686,7 +688,7 @@ async function patchProductPage() {
               <li>Receba e pague em casa</li>
               <li>Compra 100% segura</li>
             </ul>
-            <a href="${product.ctaLink || '#'}" class="btn-card">Pedir agora</a>
+            <a href="${product.cta_link || product.ctaLink || '#'}" class="btn-card">Pedir agora</a>
           </div>
         </div>`;
         pricingCards.style.display = 'flex';
@@ -696,9 +698,9 @@ async function patchProductPage() {
 
     // Link do botão de compra / CTA (Pega todos os botões que sobraram, como hero e footer)
     const ctaLinks = document.querySelectorAll('.btn-buy, .btn-checkout, .btn-primary, .add-to-cart, .btn-dark, .btn-ghost, a.btn');
+    const targetLink = product.cta_link || product.ctaLink;
     // Só sobrescreve se o admin tiver configurado um link de CTA específico (diferente de # ou vazio)
-    if (product.ctaLink && product.ctaLink !== '#' && product.ctaLink.trim() !== '') {
-      const targetLink = product.ctaLink;
+    if (targetLink && targetLink !== '#' && targetLink.trim() !== '') {
       ctaLinks.forEach(btn => {
          // Do not overwrite btn-card which has specific offer links
          if (btn.classList.contains('btn-card')) return; 
@@ -708,6 +710,56 @@ async function patchProductPage() {
              btn.setAttribute('onclick', `window.location.href='${targetLink}'`);
          }
       });
+    }
+
+    // Parcelas / Installments
+    const instEl = document.querySelector('.installments, .parcelas');
+    if (instEl) {
+        const instVal = product.details?.installments || product.installments;
+        if (instVal) instEl.textContent = instVal;
+    }
+
+    // FAQ
+    const faqContainer = document.querySelector('.faq-section .faq-inner');
+    if (faqContainer && product.details?.faq && product.details.faq.length > 0) {
+        const faqHeader = faqContainer.querySelector('.faq-header');
+        let faqHtml = faqHeader ? faqHeader.outerHTML : '';
+        product.details.faq.forEach(item => {
+            faqHtml += `
+            <div class="faq-item">
+              <button class="faq-q">${item.q}<span>+</span></button>
+              <div class="faq-a">${item.a}</div>
+            </div>`;
+        });
+        faqContainer.innerHTML = faqHtml;
+        // Re-attach listeners
+        faqContainer.querySelectorAll('.faq-q').forEach(btn => {
+            btn.onclick = () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                faqContainer.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            };
+        });
+    }
+
+    // Timer / Countdown
+    if (product.details?.countdown > 0) {
+        const timerWrap = document.createElement('div');
+        timerWrap.style.cssText = 'background:var(--espresso); color:#fff; padding:10px; border-radius:4px; margin-bottom:20px; text-align:center; font-weight:600; font-size:0.9rem;';
+        timerWrap.innerHTML = `⏳ Oferta termina em: <span id="site-timer">00:00:00</span>`;
+        if (priceEl) priceEl.parentElement.insertBefore(timerWrap, priceEl);
+        
+        let seconds = product.details.countdown * 3600;
+        const tick = () => {
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            const s = seconds % 60;
+            const timerEl = document.getElementById('site-timer');
+            if (timerEl) timerEl.textContent = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+            if (seconds > 0) { seconds--; setTimeout(tick, 1000); }
+        };
+        tick();
     }
 
     // Descrição

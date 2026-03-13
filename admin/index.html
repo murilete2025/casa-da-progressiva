@@ -130,6 +130,7 @@
                   <th>Preço</th>
                   <th>Destaque</th>
                   <th>Visível</th>
+                  <th>Ações</th>
                 </tr>
               </thead>
               <tbody id="dash-table"></tbody>
@@ -144,17 +145,19 @@
               <h2>Produtos</h2>
               <div class="sub-text" id="products-count"></div>
             </div>
-            <button class="btn btn-primary" onclick="openProductModal(null)">+ Novo Produto</button>
+            <div style="display:flex; gap:10px; align-items:center">
+              <input type="text" id="product-search" class="form-control" placeholder="🔍 Buscar produto pelo nome..." style="width:250px" oninput="filterProducts()">
+              <button class="btn btn-primary" onclick="openProductModal(null)">+ Novo Produto</button>
+            </div>
           </div>
           <div class="table-wrap">
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>Imagem</th>
-                  <th>Nome</th>
-                  <th>Categoria</th>
+                  <th>Produto</th>
                   <th>Preço</th>
-                  <th>Badge</th>
+                  <th>Promocional</th>
+                  <th>Variações / Kits</th>
                   <th>Visível</th>
                   <th>Ações</th>
                 </tr>
@@ -250,7 +253,10 @@
             <div class="form-grid">
               <div class="form-group">
                 <label>Produto em destaque</label>
-                <select class="form-control" id="he-featured-product"></select>
+                <div style="display:flex; gap:8px;">
+                  <select class="form-control" id="he-featured-product" style="flex:1"></select>
+                  <button class="btn btn-secondary btn-sm" type="button" onclick="clearFeatured()">Limpar</button>
+                </div>
               </div>
               <div class="form-group">
                 <label>Texto do botão CTA</label>
@@ -404,8 +410,16 @@
           <input type="text" class="form-control" id="pm-name" placeholder="Ex: Progressiva Vegetal Havana">
         </div>
         <div class="form-group">
-          <label>Preço (R$) *</label>
+          <label>Preço de Venda (R$) *</label>
           <input type="text" class="form-control" id="pm-price" placeholder="197,00">
+        </div>
+        <div class="form-group">
+          <label>Preço Original/De: (R$)</label>
+          <input type="text" class="form-control" id="pm-original-price" placeholder="297,00">
+        </div>
+        <div class="form-group">
+          <label>Parcelas (Ex: 12x de R$ 19,70)</label>
+          <input type="text" class="form-control" id="pm-installments" placeholder="12x de R$ 19,70">
         </div>
         <div class="form-group">
           <label>Categoria</label>
@@ -610,6 +624,7 @@
       </div>
 
       <div class="modal-footer">
+        <button class="btn btn-danger" id="pm-delete-btn" style="margin-right: auto; display: none;" onclick="deleteProductFromModal()">Excluir Produto</button>
         <button class="btn btn-secondary" onclick="closeProductModal()">Cancelar</button>
         <button class="btn btn-primary" onclick="saveProduct()">Salvar produto</button>
       </div>

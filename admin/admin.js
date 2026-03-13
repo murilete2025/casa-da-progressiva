@@ -143,6 +143,12 @@ function renderDashboard() {
       <td>R$ ${p.price}</td>
       <td>${p.featured ? '<span class="badge-pill featured">★ Sim</span>' : '—'}</td>
       <td>${p.visible !== false ? '<span class="badge-pill active">Sim</span>' : '<span class="badge-pill inactive">Não</span>'}</td>
+      <td>
+        <div class="table-actions">
+          <button class="btn btn-secondary btn-sm" onclick="openProductModal('${p.id}')">✏️</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">🗑</button>
+        </div>
+      </td>
     </tr>
   `).join('');
 }
@@ -151,42 +157,60 @@ function renderDashboard() {
 // PRODUTOS
 // ──────────────────────────────────────────────
 function renderProducts() {
-  const sorted = [...products].sort((a, b) => (a.order_index || 99) - (b.order_index || 99));
-  document.getElementById('products-count').textContent = `${products.length} produto(s) cadastrado(s)`;
+  const query = document.getElementById('product-search')?.value?.toLowerCase() || '';
+  const filtered = products.filter(p => (p.name || '').toLowerCase().includes(query));
+  
+  const sorted = [...filtered].sort((a, b) => (a.order_index || 99) - (b.order_index || 99));
+  document.getElementById('products-count').textContent = `${filtered.length} produto(s) encontrado(s) de ${products.length} cadastrados`;
   document.getElementById('products-table').innerHTML = sorted.map(p => `
     <tr>
-      <td><img class="thumb" src="${p.image_base64 || p.image1 || ''}" alt="" onerror="this.src='../images/placeholder.svg'"></td>
-      <td><strong><a href="../${p.link || ''}" target="_blank" style="color:inherit; text-decoration:none;">${p.name}</a></strong><br><a href="../${p.link || ''}" target="_blank" class="text-muted" style="font-size: 0.8em; text-decoration: underline;">${p.link || ''}</a></td>
-      <td>${p.category || '—'}</td>
+      <td style="max-width:300px">
+        <div style="display:flex; gap:12px; align-items:center">
+          <img class="thumb" src="${p.image_base64 || p.image1 || ''}" alt="" onerror="this.src='../images/placeholder.svg'">
+          <div>
+            <div style="font-weight:600; font-size:.9rem">${p.name}</div>
+            <div style="font-size:0.75rem; color:var(--text2)">${p.category || 'Sem categoria'}</div>
+            <a href="../${p.link || ''}" target="_blank" style="font-size: 0.7rem; color: var(--accent); text-decoration: underline;">Ver página</a>
+          </div>
+        </div>
+      </td>
       <td>R$ ${p.price}</td>
-      <td>${p.badge ? `<span>${p.badge}</span>` : '—'}</td>
+      <td style="color:var(--text2)">${p.original_price ? '<s>R$ ' + p.original_price + '</s>' : '—'}</td>
+      <td>${p.offers?.length || 0} variações/kits</td>
       <td>${p.visible !== false ? '<span class="badge-pill active">Sim</span>' : '<span class="badge-pill inactive">Não</span>'}</td>
       <td>
         <div class="table-actions">
           <button class="btn btn-secondary btn-sm" onclick="openProductModal('${p.id}')">✏️ Editar</button>
-          <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">🗑 Excluir</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">🗑</button>
         </div>
       </td>
     </tr>
-  `).join('') || '<tr><td colspan="7" class="empty-state"><div class="icon">📦</div><p>Nenhum produto cadastrado</p></td></tr>';
+  `).join('') || '<tr><td colspan="6" class="empty-state"><div class="icon">📦</div><p>Nenhum produto encontrado</p></td></tr>';
+}
+
+function filterProducts() {
+    renderProducts();
 }
 
 // ──────────────────────────────────────────────
 // MODAL PRODUTO
 // ──────────────────────────────────────────────
 function openProductModal(id) {
+try {
   _pendingMainImg = null;
   const modal = document.getElementById('product-modal-overlay');
   const cats  = categories.filter(c => c.active !== false);
   document.getElementById('pm-category').innerHTML = cats.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
 
   if (id) {
-    const p = products.find(x => x.id === id);
-    if (!p) return;
+    const p = products.find(x => x.id == id);
+    if (!p) { showToast('Produto não encontrado.', 'error'); return; }
     document.getElementById('pm-title').textContent = 'Editar Produto';
     document.getElementById('pm-id').value      = p.id;
     document.getElementById('pm-name').value    = p.name || '';
     document.getElementById('pm-price').value   = p.price || '';
+    document.getElementById('pm-original-price').value = p.original_price || '';
+    document.getElementById('pm-installments').value   = p.details?.installments || '';
     document.getElementById('pm-category').value = p.category || '';
     document.getElementById('pm-cta').value     = p.cta_link || p.link || '';
     document.getElementById('pm-order').value   = p.order_index || '';
@@ -221,8 +245,12 @@ function openProductModal(id) {
     document.getElementById('pm-offer2-price').value = p.offers?.[1]?.price || '';
     document.getElementById('pm-offer2-link').value  = p.offers?.[1]?.link || '';
     
+    document.getElementById('pm-offer3-title').value = p.offers?.[2]?.title || '';
     document.getElementById('pm-offer3-price').value = p.offers?.[2]?.price || '';
     document.getElementById('pm-offer3-link').value  = p.offers?.[2]?.link || '';
+    
+    document.getElementById('pm-countdown').value = p.details?.countdown || 0;
+    renderFaqItems(p.details?.faq || []);
     
     // Detalhes extras
     document.getElementById('pm-ben1-title').value = p.details?.ben1?.title || '';
@@ -241,12 +269,26 @@ function openProductModal(id) {
     document.getElementById('pm-info2-text').value  = p.details?.info2?.text  || '';
     document.getElementById('pm-info3-title').value = p.details?.info3?.title || '';
     document.getElementById('pm-info3-text').value  = p.details?.info3?.text  || '';
-
+    
+    _pendingImg3 = null; _pendingImg4 = null; _pendingImg5 = null;
+    const loadExtra = (num, src) => {
+        const prev = document.getElementById('prev-img' + num);
+        if (src) { prev.src = src; prev.classList.add('visible'); }
+        else { prev.classList.remove('visible'); }
+    };
+    loadExtra(3, p.image3_base64 || p.image3);
+    loadExtra(4, p.image4_base64 || p.image4);
+    loadExtra(5, p.image5_base64 || p.image5);
+    
+    document.getElementById('pm-delete-btn').style.display = 'inline-flex';
   } else {
     document.getElementById('pm-title').textContent = 'Novo Produto';
     document.getElementById('pm-id').value     = '';
+    document.getElementById('pm-delete-btn').style.display = 'none';
     document.getElementById('pm-name').value   = '';
     document.getElementById('pm-price').value  = '';
+    document.getElementById('pm-original-price').value = '';
+    document.getElementById('pm-installments').value   = '';
     document.getElementById('pm-cta').value    = '';
     document.getElementById('pm-order').value  = '';
     document.getElementById('pm-desc').value   = '';
@@ -266,6 +308,13 @@ function openProductModal(id) {
     document.getElementById('pm-offer3-price').value = '';
     document.getElementById('pm-offer3-link').value  = '';
     
+    document.getElementById('pm-countdown').value = 0;
+    document.getElementById('pm-faq-items').innerHTML = '';
+    _pendingImg3 = null; _pendingImg4 = null; _pendingImg5 = null;
+    document.getElementById('prev-img3').classList.remove('visible');
+    document.getElementById('prev-img4').classList.remove('visible');
+    document.getElementById('prev-img5').classList.remove('visible');
+    
     document.getElementById('pm-ben1-title').value = '';
     document.getElementById('pm-ben1-text').value  = '';
     document.getElementById('pm-ben2-title').value = '';
@@ -284,6 +333,10 @@ function openProductModal(id) {
     document.getElementById('pm-info3-text').value  = '';
   }
   modal.classList.add('open');
+} catch (err) {
+  console.error('Erro ao abrir modal:', err);
+  alert('Erro ao carregar dados do produto: ' + err.message);
+}
 }
 
 function closeProductModal() {
@@ -316,6 +369,27 @@ function handleSecImg(event) {
   reader.readAsDataURL(file);
 }
 
+let _pendingImg3 = null, _pendingImg4 = null, _pendingImg5 = null;
+function handleImg3(e) { toBase64(e.target.files[0], b => { _pendingImg3 = b; document.getElementById('prev-img3').src = b; document.getElementById('prev-img3').classList.add('visible'); }); }
+function handleImg4(e) { toBase64(e.target.files[0], b => { _pendingImg4 = b; document.getElementById('prev-img4').src = b; document.getElementById('prev-img4').classList.add('visible'); }); }
+function handleImg5(e) { toBase64(e.target.files[0], b => { _pendingImg5 = b; document.getElementById('prev-img5').src = b; document.getElementById('prev-img5').classList.add('visible'); }); }
+
+function addFaqItem(q='', a='') {
+    const div = document.createElement('div');
+    div.className = 'faq-item-row';
+    div.style.cssText = 'display:flex; gap:10px; margin-bottom:8px;';
+    div.innerHTML = `
+        <input type="text" class="form-control pm-faq-q" placeholder="Pergunta" value="${q}" style="flex:1">
+        <input type="text" class="form-control pm-faq-a" placeholder="Resposta" value="${a}" style="flex:1">
+        <button class="btn btn-danger btn-sm" onclick="this.parentElement.remove()">✕</button>
+    `;
+    document.getElementById('pm-faq-items').appendChild(div);
+}
+function renderFaqItems(faq) {
+    document.getElementById('pm-faq-items').innerHTML = '';
+    faq.forEach(item => addFaqItem(item.q, item.a));
+}
+
 async function saveProduct() {
   const id    = document.getElementById('pm-id').value;
   const name  = document.getElementById('pm-name').value.trim();
@@ -338,7 +412,13 @@ async function saveProduct() {
     infoTitle: document.getElementById('pm-info-title').value.trim(),
     info1: { title: document.getElementById('pm-info1-title').value.trim(), text: document.getElementById('pm-info1-text').value.trim() },
     info2: { title: document.getElementById('pm-info2-title').value.trim(), text: document.getElementById('pm-info2-text').value.trim() },
-    info3: { title: document.getElementById('pm-info3-title').value.trim(), text: document.getElementById('pm-info3-text').value.trim() }
+    info3: { title: document.getElementById('pm-info3-title').value.trim(), text: document.getElementById('pm-info3-text').value.trim() },
+    installments: document.getElementById('pm-installments').value.trim(),
+    countdown: parseInt(document.getElementById('pm-countdown').value) || 0,
+    faq: Array.from(document.querySelectorAll('.faq-item-row')).map(row => ({
+        q: row.querySelector('.pm-faq-q').value.trim(),
+        a: row.querySelector('.pm-faq-a').value.trim()
+    })).filter(f => f.q || f.a)
   };
 
   const offers = [];
@@ -358,6 +438,7 @@ async function saveProduct() {
     slug: slugify(name),
     name,
     price,
+    original_price: document.getElementById('pm-original-price').value.trim(),
     category: catId,
     badge: badgeText,
     badge_class: badgeClass || '',
@@ -373,7 +454,13 @@ async function saveProduct() {
     image1: existingProd.image1 || null,
     image_base64: _pendingMainImg,
     image2: existingProd.image2 || null,
-    image2_base64: _pendingSecImg
+    image2_base64: _pendingSecImg,
+    image3: existingProd.image3 || null,
+    image3_base64: _pendingImg3,
+    image4: existingProd.image4 || null,
+    image4_base64: _pendingImg4,
+    image5: existingProd.image5 || null,
+    image5_base64: _pendingImg5
   };
 
   try {
@@ -410,7 +497,7 @@ async function saveProduct() {
 }
 
 async function deleteProduct(id) {
-  confirmDialog('Excluir produto', 'Tem certeza que deseja excluir este produto do servidor? Esta ação não pode ser desfeita.', async () => {
+  confirmDialog('Excluir produto', 'Tem certeza que deseja excluir este produto? Esta ação não pode ser desfeita.', async () => {
     try {
         const response = await fetch(`${API_URL}/products/${id}`, { method: 'DELETE' });
         if (!response.ok) throw new Error('Erro ao excluir no servidor');
@@ -419,11 +506,18 @@ async function deleteProduct(id) {
         save(KEY_PRODUCTS, products);
         renderProducts();
         renderDashboard();
-        showToast('Produto excluído do servidor.', 'success');
+        showToast('Produto excluído com sucesso.', 'success');
     } catch (err) {
         showToast('Erro: ' + err.message, 'error');
     }
   });
+}
+
+function deleteProductFromModal() {
+    const id = document.getElementById('pm-id').value;
+    if (!id) return;
+    deleteProduct(id);
+    closeProductModal();
 }
 
 // ──────────────────────────────────────────────
@@ -714,6 +808,17 @@ async function saveHome() {
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(newFeat)
           });
+      } else {
+          // Explicitly un-feature whoever was featured if "Nenhum" is selected
+          const prevFeat = products.find(p => p.featured);
+          if (prevFeat) {
+              prevFeat.featured = false;
+              await fetch(`${API_URL}/products/save`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(prevFeat)
+              });
+          }
       }
       
       // Sync local state for other products
@@ -728,6 +833,17 @@ async function saveHome() {
   } catch (err) {
       showToast('Erro ao salvar home: ' + err.message, 'error');
   }
+}
+
+function clearFeatured() {
+    document.getElementById('he-featured-product').value = "";
+    document.getElementById('he-featured-btn').value = "";
+    document.getElementById('he-featured-title').value = "";
+    document.getElementById('he-featured-subtitle').value = "";
+    document.getElementById('he-featured-text').value = "";
+    document.getElementById('prev-featured').classList.remove('visible');
+    _pendingFeaturedImg = null;
+    showToast('Destaque limpo (clique em salvar para aplicar)', 'info');
 }
 
 // ──────────────────────────────────────────────
