@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Casa da Progressiva</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════ LOGIN ═══════════════ -->
+  <div id="login-screen">
+    <div class="login-box">
+      <div class="login-logo">Casa da <span>Progressiva</span></div>
+      <div class="login-sub">Painel Administrador</div>
+      <label for="pwd-input">Senha</label>
+      <input type="password" id="pwd-input" placeholder="Digite sua senha" autocomplete="current-password">
+      <button class="btn-login" onclick="doLogin()">Entrar</button>
+      <div class="login-error" id="login-error">Senha incorreta. Tente novamente.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ APP PRINCIPAL ═══════════════ -->
+  <div id="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        Casa da <span>Progressiva</span>
+        <small>Painel Admin</small>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">Visão Geral</div>
+        <div class="nav-item active" onclick="nav('dashboard')">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          Dashboard
+        </div>
+
+        <div class="sidebar-section">Catálogo</div>
+        <div class="nav-item" onclick="nav('products')">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+          Produtos
+        </div>
+        <div class="nav-item" onclick="nav('categories')">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+          Categorias
+        </div>
+
+        <div class="sidebar-section">Site</div>
+        <div class="nav-item" onclick="nav('home-editor')">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+          Editor da Home
+        </div>
+        <div class="nav-item" onclick="nav('testimonials')">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+          </svg>
+          Depoimentos
+        </div>
+        <div class="nav-item" onclick="nav('store-settings')">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            <line x1="12" y1="22" x2="12" y2="12" />
+          </svg>
+          Loja &amp; Pixels
+        </div>
+
+        <div class="sidebar-section">Sistema</div>
+        <div class="nav-item" onclick="nav('settings')">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+          </svg>
+          Configurações
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" target="_blank" class="view-site-btn" style="margin-bottom:10px;display:flex;">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+          Ver site
+        </a>
+        <button class="btn-logout" onclick="doLogout()">Sair</button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="topbar">
+        <div class="topbar-title" id="topbar-title">Dashboard</div>
+        <div class="topbar-actions">
+          <button class="btn btn-primary btn-sm" id="topbar-add-btn" style="display:none"
+            onclick="openProductModal(null)">
+            + Novo Produto
+          </button>
+        </div>
+      </div>
+
+      <div class="page-content">
+
+        <!-- ─── DASHBOARD ─── -->
+        <div class="section active" id="sec-dashboard">
+          <div class="stats-row" id="dash-stats"></div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Categoria</th>
+                  <th>Preço</th>
+                  <th>Destaque</th>
+                  <th>Visível</th>
+                </tr>
+              </thead>
+              <tbody id="dash-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ─── PRODUTOS ─── -->
+        <div class="section" id="sec-products">
+          <div class="sec-header">
+            <div>
+              <h2>Produtos</h2>
+              <div class="sub-text" id="products-count"></div>
+            </div>
+            <button class="btn btn-primary" onclick="openProductModal(null)">+ Novo Produto</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Imagem</th>
+                  <th>Nome</th>
+                  <th>Categoria</th>
+                  <th>Preço</th>
+                  <th>Badge</th>
+                  <th>Visível</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="products-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ─── CATEGORIAS ─── -->
+        <div class="section" id="sec-categories">
+          <div class="sec-header">
+            <div>
+              <h2>Categorias</h2>
+              <div class="sub-text" id="cats-count"></div>
+            </div>
+            <button class="btn btn-primary" onclick="openCatModal(null)">+ Nova Categoria</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Slug / Link</th>
+                  <th>Produtos</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="cats-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ─── PEDIDOS ─── -->
+        <div class="section" id="sec-orders">
+          <div class="sec-header">
+            <div>
+              <h2>Pedidos</h2>
+              <div class="sub-text" id="orders-count">Carregando pedidos...</div>
+            </div>
+            <button class="btn btn-secondary" onclick="loadOrders()">🔄 Atualizar</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Cliente</th>
+                  <th>Total</th>
+                  <th>Pagamento</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ─── EDITOR DA HOME ─── -->
+        <div class="section" id="sec-home-editor">
+          <div class="sec-header">
+            <h2>Editor da Home</h2>
+            <button class="btn btn-primary" onclick="saveHome()">Salvar alterações</button>
+          </div>
+
+          <!-- Barra de anúncio -->
+          <div class="banner-row">
+            <h4>📢 Barra de Anúncio (topo)</h4>
+            <div class="form-group">
+              <label>Texto da barra</label>
+              <input type="text" class="form-control" id="he-announcement"
+                placeholder="Ex: Frete grátis · Pague na entrega">
+            </div>
+          </div>
+
+          <!-- Hero Banners -->
+          <div class="banner-row">
+            <h4>🖼️ Banners Hero (Slideshow Principal)</h4>
+            <div id="hero-banners-editor"></div>
+          </div>
+
+          <!-- Cat Banners -->
+          <div class="banner-row">
+            <h4>🏷️ Banners de Categoria</h4>
+            <div id="cat-banners-editor"></div>
+          </div>
+
+          <!-- Destaque -->
+          <div class="banner-row">
+            <h4>⭐ Seção Destaque</h4>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Produto em destaque</label>
+                <select class="form-control" id="he-featured-product"></select>
+              </div>
+              <div class="form-group">
+                <label>Texto do botão CTA</label>
+                <input type="text" class="form-control" id="he-featured-btn" placeholder="Ex: Conhecer o produto">
+              </div>
+              <div class="form-group full">
+                <label>Imagem do destaque (opcional — substitui a imagem do produto)</label>
+                <div class="upload-zone" id="uz-featured">
+                  <input type="file" accept="image/*" onchange="handleFeaturedImg(event)">
+                  <div class="upload-icon">🖼️</div>
+                  <p>Clique ou arraste uma imagem</p>
+                </div>
+                <img class="img-preview" id="prev-featured">
+              </div>
+              <div class="form-group">
+                <label>Título do destaque</label>
+                <input type="text" class="form-control" id="he-featured-title"
+                  placeholder="Ex: Progressiva Vegetal Havana">
+              </div>
+              <div class="form-group">
+                <label>Subtítulo (rótulo acima)</label>
+                <input type="text" class="form-control" id="he-featured-subtitle" placeholder="Ex: Produto destaque">
+              </div>
+              <div class="form-group full">
+                <label>Texto descritivo</label>
+                <textarea class="form-control" id="he-featured-text" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── CONFIGURAÇÕES ─── -->
+        <div class="section" id="sec-settings">
+          <div class="sec-header">
+            <h2>Configurações</h2>
+          </div>
+
+          <div class="banner-row" style="max-width:500px">
+            <h4>🔒 Segurança</h4>
+            <div class="form-group" style="margin-bottom:12px">
+              <label>Nova senha do admin</label>
+              <input type="password" class="form-control" id="new-pwd" placeholder="Nova senha">
+            </div>
+            <div class="form-group" style="margin-bottom:16px">
+              <label>Confirmar nova senha</label>
+              <input type="password" class="form-control" id="new-pwd2" placeholder="Repita a senha">
+            </div>
+            <button class="btn btn-primary" onclick="savePwd()">Alterar senha</button>
+          </div>
+
+          <div class="banner-row" style="max-width:500px; margin-top:16px">
+            <h4>💾 Backup de Dados</h4>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px">
+              <button class="btn btn-secondary" onclick="exportData()">⬇ Exportar JSON</button>
+              <button class="btn btn-secondary" onclick="document.getElementById('import-file').click()">⬆ Importar
+                JSON</button>
+              <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
+              <button class="btn btn-danger" onclick="confirmReset()">🗑 Resetar tudo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── DEPOIMENTOS ─── -->
+        <div class="section" id="sec-testimonials">
+          <div class="sec-header">
+            <div>
+              <h2>Depoimentos</h2>
+              <div class="sub-text" id="testimonials-count"></div>
+            </div>
+            <button class="btn btn-primary" onclick="openTestimonialModal(null)">+ Novo Depoimento</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Produto</th>
+                  <th>Estrelas</th>
+                  <th>Texto</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="testimonials-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ─── LOJA & PIXELS ─── -->
+        <div class="section" id="sec-store-settings">
+          <div class="sec-header">
+            <h2>Loja &amp; Pixels</h2>
+            <button class="btn btn-primary" onclick="saveStoreSettings()">Salvar configurações</button>
+          </div>
+
+          <div class="banner-row" style="max-width:600px">
+            <h4>📱 WhatsApp</h4>
+            <div class="form-group">
+              <label>Número do WhatsApp (com código do país)</label>
+              <input type="text" class="form-control" id="ss-whatsapp" placeholder="5562981670981">
+            </div>
+            <div class="form-group">
+              <label>Mensagem pré-definida (URL encoded)</label>
+              <input type="text" class="form-control" id="ss-wa-message" placeholder="Olá%2C vim do site...">
+            </div>
+          </div>
+
+          <div class="banner-row" style="max-width:600px; margin-top:16px">
+            <h4>📊 Pixels de Rastreamento</h4>
+            <div class="form-group">
+              <label>Facebook Pixel ID</label>
+              <input type="text" class="form-control" id="ss-fb-pixel" placeholder="Ex: 123456789012345">
+            </div>
+            <div class="form-group">
+              <label>Google Tag Manager ID</label>
+              <input type="text" class="form-control" id="ss-gtm" placeholder="Ex: GTM-XXXXXXX">
+            </div>
+          </div>
+
+          <div class="banner-row" style="max-width:600px; margin-top:16px">
+            <h4>🌐 Redes Sociais</h4>
+            <div class="form-group">
+              <label>Instagram URL</label>
+              <input type="text" class="form-control" id="ss-instagram" placeholder="https://instagram.com/...">
+            </div>
+            <div class="form-group">
+              <label>Facebook URL</label>
+              <input type="text" class="form-control" id="ss-facebook" placeholder="https://facebook.com/...">
+            </div>
+            <div class="form-group">
+              <label>TikTok URL</label>
+              <input type="text" class="form-control" id="ss-tiktok" placeholder="https://tiktok.com/...">
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /page-content -->
+    </main>
+  </div><!-- /app -->
+
+  <!-- ═══════════════ MODAL PRODUTO ═══════════════ -->
+  <div class="modal-overlay" id="product-modal-overlay">
+    <div class="modal" style="max-width:760px">
+      <div class="modal-header">
+        <div class="modal-title" id="pm-title">Novo Produto</div>
+        <button class="modal-close" onclick="closeProductModal()">✕</button>
+      </div>
+      <input type="hidden" id="pm-id">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Nome do produto *</label>
+          <input type="text" class="form-control" id="pm-name" placeholder="Ex: Progressiva Vegetal Havana">
+        </div>
+        <div class="form-group">
+          <label>Preço (R$) *</label>
+          <input type="text" class="form-control" id="pm-price" placeholder="197,00">
+        </div>
+        <div class="form-group">
+          <label>Categoria</label>
+          <select class="form-control" id="pm-category"></select>
+        </div>
+        <div class="form-group">
+          <label>Badge</label>
+          <select class="form-control" id="pm-badge">
+            <option value="">Sem badge</option>
+            <option value="Mais vendido|badge-best">Mais vendido (dourado)</option>
+            <option value="Top vendas|badge-best">Top vendas (dourado)</option>
+            <option value="Orgânico|badge-hot">Orgânico (verde)</option>
+            <option value="Tratamento|badge-hot">Tratamento (verde)</option>
+            <option value="Novo|badge-new">Novo (escuro)</option>
+            <option value="Chuveiro|badge-new">Chuveiro (escuro)</option>
+            <option value="Suplemento|badge-new">Suplemento (escuro)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Link do botão CTA (WhatsApp, checkout, etc.)</label>
+          <input type="text" class="form-control" id="pm-cta" placeholder="https://wa.me/55...">
+        </div>
+        <div class="form-group">
+          <label>Ordem de exibição</label>
+          <input type="number" class="form-control" id="pm-order" min="1" placeholder="1">
+        </div>
+        <div class="form-group full">
+          <label>Descrição Curta / Subtítulo</label>
+          <textarea class="form-control" id="pm-desc" rows="3"
+            placeholder="Descrição rápida que vai abaixo do título..."></textarea>
+        </div>
+
+        <div class="form-group full">
+          <h4>Detalhes da Landing Page do Produto</h4>
+          <p style="font-size:0.85rem; color:var(--stone); margin-bottom: 10px;">Preencha para customizar a página de
+            vendas deste produto. Deixe em branco para usar o texto padrão.</p>
+        </div>
+
+        <div class="form-group full"
+          style="background:var(--ivory); padding:15px; border-radius:8px; border: 1px solid var(--border); margin-bottom:10px;">
+          <strong>Sessão de Benefícios (Os 4 passos)</strong>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:8px;">
+            <input type="text" class="form-control" id="pm-ben1-title"
+              placeholder="Título 1 (Ex: Crescimento acelerado)">
+            <input type="text" class="form-control" id="pm-ben1-text" placeholder="Texto curto...">
+            <input type="text" class="form-control" id="pm-ben2-title" placeholder="Título 2 (Ex: Brilho intenso)">
+            <input type="text" class="form-control" id="pm-ben2-text" placeholder="Texto curto...">
+            <input type="text" class="form-control" id="pm-ben3-title" placeholder="Título 3">
+            <input type="text" class="form-control" id="pm-ben3-text" placeholder="Texto curto...">
+            <input type="text" class="form-control" id="pm-ben4-title" placeholder="Título 4">
+            <input type="text" class="form-control" id="pm-ben4-text" placeholder="Texto curto...">
+          </div>
+        </div>
+
+        <div class="form-group full"
+          style="background:var(--paper); padding:15px; border-radius:8px; border: 1px solid var(--border);">
+          <strong>Sessão Informativa (Ex: Por que fugir do formol?)</strong>
+          <input type="text" class="form-control" id="pm-info-title" placeholder="Título da Seção"
+            style="margin-top:8px; margin-bottom:8px;">
+          <div style="display:flex; gap:10px; margin-top:8px;">
+            <input type="text" class="form-control" id="pm-info1-title" placeholder="Motivo 1">
+            <input type="text" class="form-control" id="pm-info1-text" placeholder="Texto">
+          </div>
+          <div style="display:flex; gap:10px; margin-top:8px;">
+            <input type="text" class="form-control" id="pm-info2-title" placeholder="Motivo 2">
+            <input type="text" class="form-control" id="pm-info2-text" placeholder="Texto">
+          </div>
+          <div style="display:flex; gap:10px; margin-top:8px;">
+            <input type="text" class="form-control" id="pm-info3-title" placeholder="Motivo 3">
+            <input type="text" class="form-control" id="pm-info3-text" placeholder="Texto">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="switch-wrap">
+            <label class="switch"><input type="checkbox" id="pm-visible" checked><span class="slider"></span></label>
+            <span style="font-size:.82rem">Visível no site</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="switch-wrap">
+            <label class="switch"><input type="checkbox" id="pm-featured"><span class="slider"></span></label>
+            <span style="font-size:.82rem">Produto em destaque na home</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="form-grid">
+        <div class="form-group full">
+          <h4>Opções de Oferta (Seção Preços)</h4>
+          <p style="font-size:0.85rem; color:var(--stone); margin-bottom: 10px;">Preencha até 3 opções de kits. Se
+            deixar vazio, mostrará apenas 1 oferta usando o Preço e CTA originais.</p>
+        </div>
+        <div class="form-group full"
+          style="background:var(--paper); padding:15px; border-radius:8px; margin-bottom:10px; border: 1px solid var(--border);">
+          <strong>Oferta 1</strong>
+          <div style="display:flex; gap:10px; margin-top:8px;">
+            <input type="text" class="form-control" id="pm-offer1-title" placeholder="Título (Ex: 1 pote)">
+            <input type="text" class="form-control" id="pm-offer1-price" placeholder="Preço (Ex: 150,00)">
+          </div>
+          <input type="text" class="form-control" id="pm-offer1-link" placeholder="Link de Checkout"
+            style="margin-top:10px;">
+        </div>
+        <div class="form-group full"
+          style="background:var(--paper); padding:15px; border-radius:8px; margin-bottom:10px; border: 1px solid var(--border);">
+          <strong>Oferta 2</strong>
+          <div style="display:flex; gap:10px; margin-top:8px;">
+            <input type="text" class="form-control" id="pm-offer2-title" placeholder="Título (Ex: 2 potes)">
+            <input type="text" class="form-control" id="pm-offer2-price" placeholder="Preço (Ex: 197,00)">
+          </div>
+          <input type="text" class="form-control" id="pm-offer2-link" placeholder="Link de Checkout"
+            style="margin-top:10px;">
+        </div>
+        <div class="form-group full"
+          style="background:var(--paper); padding:15px; border-radius:8px; border: 1px solid var(--border);">
+          <strong>Oferta 3</strong>
+          <div style="display:flex; gap:10px; margin-top:8px;">
+            <input type="text" class="form-control" id="pm-offer3-title" placeholder="Título (Ex: 3 potes)">
+            <input type="text" class="form-control" id="pm-offer3-price" placeholder="Preço (Ex: 291,00)">
+          </div>
+          <input type="text" class="form-control" id="pm-offer3-link" placeholder="Link de Checkout"
+            style="margin-top:10px;">
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="form-grid">
+        <div class="form-group full">
+          <h4>⏱️ Contador Regressivo</h4>
+          <p style="font-size:0.85rem; color:var(--stone); margin-bottom: 10px;">Define um timer na página do produto.
+            Deixe 0 para desativar.</p>
+        </div>
+        <div class="form-group">
+          <label>Horas do contador (ex: 2 = 2 horas)</label>
+          <input type="number" class="form-control" id="pm-countdown" min="0" max="72" placeholder="0" value="0">
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="form-grid">
+        <div class="form-group full">
+          <h4>❓ FAQ do Produto (Perguntas Frequentes)</h4>
+          <p style="font-size:0.85rem; color:var(--stone); margin-bottom: 10px;">Adicione até 5 perguntas e respostas
+            para exibir na página do produto.</p>
+        </div>
+        <div id="pm-faq-items" class="form-group full">
+          <!-- FAQ items rendered dynamically -->
+        </div>
+        <div class="form-group full">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="addFaqItem()">+ Adicionar Pergunta</button>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Imagem principal (capa)</label>
+          <div class="upload-zone" id="uz-main">
+            <input type="file" accept="image/*" onchange="handleMainImg(event)">
+            <div class="upload-icon">📷</div>
+            <p>Clique ou arraste a imagem de capa</p>
+            <div class="upload-hint">Recomendado: 600×600px · JPG, PNG, WEBP</div>
+          </div>
+          <img class="img-preview" id="prev-main">
+        </div>
+        <div class="form-group full">
+          <label>Imagem 2 (opcional)</label>
+          <div class="upload-zone" id="uz-sec">
+            <input type="file" accept="image/*" onchange="handleSecImg(event)">
+            <div class="upload-icon">📷</div>
+            <p>Clique ou arraste a segunda imagem</p>
+          </div>
+          <img class="img-preview" id="prev-sec">
+        </div>
+        <div class="form-group full">
+          <label>Imagem 3 (opcional)</label>
+          <div class="upload-zone" id="uz-img3">
+            <input type="file" accept="image/*" onchange="handleImg3(event)">
+            <div class="upload-icon">📷</div>
+            <p>Clique ou arraste a terceira imagem</p>
+          </div>
+          <img class="img-preview" id="prev-img3">
+        </div>
+        <div class="form-group full">
+          <label>Imagem 4 (opcional)</label>
+          <div class="upload-zone" id="uz-img4">
+            <input type="file" accept="image/*" onchange="handleImg4(event)">
+            <div class="upload-icon">📷</div>
+            <p>Clique ou arraste a quarta imagem</p>
+          </div>
+          <img class="img-preview" id="prev-img4">
+        </div>
+        <div class="form-group full">
+          <label>Imagem 5 (opcional)</label>
+          <div class="upload-zone" id="uz-img5">
+            <input type="file" accept="image/*" onchange="handleImg5(event)">
+            <div class="upload-icon">📷</div>
+            <p>Clique ou arraste a quinta imagem</p>
+          </div>
+          <img class="img-preview" id="prev-img5">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeProductModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="saveProduct()">Salvar produto</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MODAL CATEGORIA ═══════════════ -->
+  <div class="modal-overlay" id="cat-modal-overlay">
+    <div class="modal" style="max-width:480px">
+      <div class="modal-header">
+        <div class="modal-title" id="cm-title">Nova Categoria</div>
+        <button class="modal-close" onclick="closeCatModal()">✕</button>
+      </div>
+      <input type="hidden" id="cm-id">
+      <div class="form-grid cols-1">
+        <div class="form-group">
+          <label>Nome da categoria *</label>
+          <input type="text" class="form-control" id="cm-name" placeholder="Ex: Máscaras Capilares"
+            oninput="autoSlug()">
+        </div>
+        <div class="form-group">
+          <label>Slug (URL)</label>
+          <input type="text" class="form-control" id="cm-slug" placeholder="mascaras-capilares">
+        </div>
+        <div class="form-group">
+          <label>Link da página de categoria</label>
+          <input type="text" class="form-control" id="cm-link" placeholder="categorias/mascaras/index.html">
+        </div>
+        <div class="form-group">
+          <div class="switch-wrap">
+            <label class="switch"><input type="checkbox" id="cm-active" checked><span class="slider"></span></label>
+            <span style="font-size:.82rem">Ativa (exibir no menu)</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeCatModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="saveCat()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MODAL CONFIRMAÇÃO ═══════════════ -->
+  <div class="confirm-overlay" id="confirm-overlay">
+    <div class="confirm-box">
+      <h3 id="confirm-title">Confirmar</h3>
+      <p id="confirm-msg">Tem certeza?</p>
+      <div class="confirm-actions">
+        <button class="btn btn-secondary btn-sm" onclick="confirmCancel()">Cancelar</button>
+        <button class="btn btn-danger btn-sm" id="confirm-ok">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TOAST ═══════════════ -->
+  <div class="toast" id="toast"></div>
+  <script src="/js/site-data.js"></script>
+  <script src="/admin/admin.js"></script>
+</body>
+
+</html>

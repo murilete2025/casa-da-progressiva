@@ -1,0 +1,21 @@
+
+services:
+  - type: web
+    name: casa-da-progressiva
+    env: node
+    plan: free
+    buildCommand: "npm install --prefix backend"
+    startCommand: "npm start --prefix backend"
+    envVars:
+      - key: NODE_VERSION
+        value: 20.10.0
+      - key: SUPABASE_URL
+        value: "" # Preencha no painel do Render
+      - key: SUPABASE_KEY
+        value: "" # Preencha no painel do Render
+      - key: DATABASE_URL
+        value: "" # Preencha no painel do Render
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PORT
+        value: 10000

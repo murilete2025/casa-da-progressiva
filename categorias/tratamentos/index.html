@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="Casa da Progressiva — Tratamentos Capilares. Condicionadores e suplementos para cabelos mais fortes e saudáveis. Pagamento na entrega, frete grátis.">
+<title>Tratamentos — Casa da Progressiva</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ivory:#f9f6f1;--paper:#f2ede5;--linen:#e8e0d4;--stone:#c4b9a8;--warm:#8c7b68;--espresso:#3d2e20;--ink:#1e1510;--sage:#5a6b55;--sage-lt:#8fa887;--gold:#b08d57;--gold-lt:#cca96e;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;--radius:4px;--radius-md:8px;--radius-lg:16px;--max:1200px;--shadow:0 4px 24px rgba(30,21,16,.07);--shadow-md:0 8px 40px rgba(30,21,16,.11);--transition:all .32s cubic-bezier(.4,0,.2,1);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--ivory);color:var(--espresso);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;max-width:100%;}a{color:inherit;text-decoration:none;}
+.bar{background:var(--sage);color:#fff;text-align:center;padding:11px 20px;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;position:sticky;top:0;z-index:300;}.bar b{font-weight:700;}
+header{background:rgba(249,246,241,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--linen);position:sticky;top:36px;z-index:200;}
+.header-inner{max-width:var(--max);margin:0 auto;padding:18px 48px;display:flex;align-items:center;gap:28px;}
+.logo{font-family:var(--serif);font-size:1.45rem;font-weight:400;letter-spacing:.05em;color:var(--ink);white-space:nowrap;flex-shrink:0;}.logo em{color:var(--gold);font-style:italic;}
+.search-bar{flex:1;display:flex;border:1px solid var(--linen);border-radius:var(--radius-md);overflow:hidden;background:#fff;transition:border-color .3s,box-shadow .3s;}.search-bar:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(176,141,87,.1);}
+.search-bar input{flex:1;border:none;outline:none;padding:10px 16px;font-family:var(--sans);font-size:.82rem;color:var(--ink);background:transparent;}.search-bar input::placeholder{color:var(--stone);}
+.search-bar button{background:var(--ink);border:none;padding:0 18px;cursor:pointer;color:#fff;transition:background .25s;}.search-bar button:hover{background:var(--espresso);}
+.header-actions{display:flex;align-items:center;gap:20px;flex-shrink:0;}.header-link{color:var(--warm);font-size:.75rem;font-weight:500;letter-spacing:.05em;display:flex;align-items:center;gap:6px;transition:color .25s;white-space:nowrap;}.header-link:hover{color:var(--ink);}
+.btn-header{background:var(--ink);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border-radius:var(--radius);transition:background .25s;white-space:nowrap;}.btn-header:hover{background:var(--espresso);}
+nav.cat-nav{background:var(--ivory);border-bottom:1px solid var(--linen);}.cat-nav ul{max-width:var(--max);margin:0 auto;padding:0 48px;display:flex;list-style:none;overflow-x:auto;}
+.cat-nav ul li a{display:block;padding:13px 20px;color:var(--warm);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:color .25s;position:relative;}
+.cat-nav ul li a::after{content:'';position:absolute;bottom:0;left:20px;right:20px;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .3s ease;}
+.cat-nav ul li a:hover,.cat-nav ul li a.active{color:var(--ink);}.cat-nav ul li a:hover::after,.cat-nav ul li a.active::after{transform:scaleX(1);}
+.cat-hero{background:linear-gradient(135deg,#1c2a1e 0%,#2e3828 50%,#1a1f12 100%);padding:72px 48px;position:relative;overflow:hidden;}
+.cat-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 50%,rgba(176,141,87,.1) 0%,transparent 60%);}
+.cat-hero-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:2;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:28px;}.breadcrumb a{color:rgba(255,255,255,.4);transition:color .2s;}.breadcrumb a:hover{color:var(--gold-lt);}.breadcrumb span{color:var(--gold-lt);}
+.cat-hero-label{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);display:flex;align-items:center;gap:10px;margin-bottom:20px;}.cat-hero-label::before{content:'';display:block;width:28px;height:1px;background:var(--gold-lt);}
+.cat-hero h1{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.6rem);font-weight:300;line-height:1.1;color:#fff;margin-bottom:16px;}.cat-hero h1 em{color:var(--gold-lt);font-style:italic;}
+.cat-hero p{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.5);font-weight:300;max-width:500px;}
+.cat-hero-count{margin-top:28px;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);font-size:.75rem;font-weight:500;padding:9px 18px;border-radius:40px;}
+.container{max-width:var(--max);margin:0 auto;padding:0 48px;}.products-section{padding:64px 0 80px;}.products-section .container{padding:0 48px;}
+.section-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px;}
+.section-top h2{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--ink);}.section-top h2 em{font-style:italic;color:var(--gold);}
+.product-count{font-size:.78rem;font-weight:500;color:var(--stone);letter-spacing:.05em;}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;}
+.product-card{background:#fff;border-radius:var(--radius-md);border:1px solid var(--linen);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;position:relative;}.product-card:hover{border-color:var(--gold);box-shadow:var(--shadow-md);transform:translateY(-4px);}
+.product-card-img{width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--paper);position:relative;}.product-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block;}.product-card:hover .product-card-img img{transform:scale(1.06);}
+.badge{position:absolute;top:12px;left:12px;font-size:.62rem;font-weight:700;padding:4px 12px;border-radius:3px;text-transform:uppercase;letter-spacing:.1em;color:#fff;z-index:2;}.badge-hot{background:var(--sage);}.badge-new{background:var(--ink);}.badge-best{background:var(--gold);color:var(--ink);}
+.product-card-body{padding:20px 20px 24px;flex:1;display:flex;flex-direction:column;}.product-card-name{font-weight:500;font-size:.88rem;line-height:1.5;color:var(--ink);margin-bottom:6px;}.product-stars{color:var(--gold);font-size:.75rem;margin-bottom:12px;letter-spacing:1px;}
+.product-card-entrega{display:flex;align-items:center;gap:6px;font-size:.72rem;font-weight:500;color:var(--sage);margin-bottom:10px;}
+.product-card-price{font-family:var(--serif);font-size:1.65rem;font-weight:300;color:var(--ink);margin-bottom:14px;line-height:1;}.product-card-price sup{font-size:.85rem;vertical-align:super;margin-right:2px;}
+.btn-card{display:block;text-align:center;background:var(--ink);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:12px;border-radius:var(--radius);transition:background .25s;margin-top:auto;}.btn-card:hover{background:var(--espresso);}
+.other-cats{background:var(--paper);border-top:1px solid var(--linen);padding:64px 48px;}.other-cats-inner{max-width:var(--max);margin:0 auto;}.other-cats h3{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--ink);margin-bottom:28px;}.other-cats h3 em{font-style:italic;color:var(--gold);}
+.cats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.cat-card{background:#fff;border:1px solid var(--linen);border-radius:var(--radius-md);padding:24px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;transition:var(--transition);}.cat-card:hover{border-color:var(--gold);box-shadow:var(--shadow);transform:translateY(-3px);}
+.cat-card-icon{font-size:1.6rem;}.cat-card-name{font-size:.82rem;font-weight:600;color:var(--ink);letter-spacing:.03em;}.cat-card-count{font-size:.72rem;color:var(--stone);font-weight:300;}.cat-card-arrow{font-size:.85rem;color:var(--gold);margin-top:auto;}
+.float-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;gap:20px;padding:14px 24px;font-size:.78rem;z-index:100;border-top:1px solid rgba(255,255,255,.08);}
+.float-bar a{background:var(--gold);color:var(--ink);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 20px;border-radius:var(--radius);white-space:nowrap;transition:background .25s;}.float-bar a:hover{background:var(--gold-lt);}
+.wa{position:fixed;bottom:72px;right:28px;width:52px;height:52px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(37,211,102,.35);z-index:99;transition:transform .25s;}.wa:hover{transform:scale(1.1);}
+footer{background:#120d09;color:rgba(255,255,255,.35);padding:40px 48px;text-align:center;font-size:.78rem;}footer a{color:var(--gold-lt);}
+@media(max-width:900px){.header-inner{padding:14px 24px;}.search-bar{display:none;}.cat-hero{padding:52px 24px;}.products-section .container,.container{padding:0 24px;}.cats-grid{grid-template-columns:repeat(2,1fr);}.other-cats{padding:48px 24px;}}
+@media(max-width:600px){.product-grid{grid-template-columns:repeat(2,1fr);gap:14px;}.cats-grid{grid-template-columns:repeat(2,1fr);}.float-bar{flex-direction:column;gap:8px;}
+.header-inner{padding:12px 16px;gap:12px;}.logo{font-size:1.1rem;}.header-link{display:none;}.btn-header{padding:8px 12px;font-size:.68rem;}
+.cat-nav ul{padding:0 12px;}.cat-nav ul li a{padding:10px 10px;font-size:.68rem;}
+.cat-hero h1{font-size:2rem;}.cat-hero p{font-size:.85rem;}
+.float-bar{padding:10px 14px;font-size:.78rem;}.wa{bottom:76px;right:14px;width:46px;height:46px;font-size:1.3rem;}
+footer{padding:28px 20px;}}
+</style>
+</head>
+<body>
+
+<div class="bar"><b>Frete grátis</b> para todo o Brasil &nbsp;·&nbsp; <b>Pagamento somente na entrega</b></div>
+
+<header>
+  <div class="header-inner">
+    <a href="../../index.html" class="logo">Casa da <em>Progressiva</em></a>
+    <div class="search-bar">
+      <input type="text" placeholder="Busque por produto…">
+      <button><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    </div>
+    <div class="header-actions">
+      <a href="https://wa.me/+556281670981" class="header-link" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Atendimento
+      </a>
+      <a href="../../index.html#produtos" class="btn-header">Ver produtos</a>
+    </div>
+  </div>
+</header>
+
+<nav class="cat-nav">
+  <ul>
+    <li><a href="../../index.html#produtos">Todos</a></li>
+    <li><a href="../progressivas/index.html">Progressivas</a></li>
+    <li><a href="../mascaras/index.html">Máscaras Capilares</a></li>
+    <li><a href="../escovas/index.html">Escovas &amp; Pentes</a></li>
+    <li><a href="index.html" class="active">Tratamentos</a></li>
+    <li><a href="../extensoes/index.html">Extensões</a></li>
+  </ul>
+</nav>
+
+<section class="cat-hero">
+  <div class="cat-hero-inner">
+    <div class="breadcrumb"><a href="../../index.html">Início</a><span>›</span><span>Tratamentos</span></div>
+    <div class="cat-hero-label">Categoria</div>
+    <h1>Tratamentos<br><em>Capilares</em></h1>
+    <p>Condicionadores e suplementos para cabelos mais fortes, hidratados e saudáveis. Cuide do seu cabelo de dentro para fora.</p>
+    <div class="cat-hero-count">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+      3 produtos nesta categoria
+    </div>
+  </div>
+</section>
+
+<section class="products-section" id="produtos">
+  <div class="container">
+    <div class="section-top">
+      <h2>Tratamentos <em>Capilares</em></h2>
+      <span class="product-count">3 produtos</span>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-card-img">
+          <img src="../../produtos/melanine-hair/images/capa.png" alt="Melanine Hair" onerror="this.src='../../images/placeholder.svg'">
+          <span class="badge badge-hot">Tratamento</span>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Melanine Hair — Tônico em Gotas</div>
+          <div class="product-stars">★★★★★</div>
+          <div class="product-card-entrega"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Paga somente na entrega</div>
+          <div class="product-card-price"><sup>R$</sup>177</div>
+          <a href="../../produtos/melanine-hair/index.html" class="btn-card">Ver produto</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-img">
+          <img src="../../produtos/ativador-de-crescimento/images/capa.jpeg" alt="Ativador de Crescimento" onerror="this.src='../../images/placeholder.svg'">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">PRO+ Ativador de Crescimento Spray</div>
+          <div class="product-stars">★★★★★</div>
+          <div class="product-card-entrega"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Paga somente na entrega</div>
+          <div class="product-card-price"><sup>R$</sup>85</div>
+          <a href="../../produtos/ativador-de-crescimento/index.html" class="btn-card">Ver produto</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-img">
+          <img src="../../produtos/creatina-cabelo-unha/images/capa.png" alt="Creatina Cabelo Unha" onerror="this.src='../../images/placeholder.svg'">
+          <span class="badge badge-new">Suplemento</span>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Creatine NextLife — Cabelo &amp; Unha</div>
+          <div class="product-stars">★★★★★</div>
+          <div class="product-card-entrega"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Paga somente na entrega</div>
+          <div class="product-card-price"><sup>R$</sup>99</div>
+          <a href="../../produtos/creatina-cabelo-unha/index.html" class="btn-card">Ver produto</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="other-cats">
+  <div class="other-cats-inner">
+    <h3>Explorar outras <em>categorias</em></h3>
+    <div class="cats-grid">
+      <a href="../progressivas/index.html" class="cat-card"><div class="cat-card-icon">🌿</div><div class="cat-card-name">Progressivas</div><div class="cat-card-count">8 produtos</div><div class="cat-card-arrow">→</div></a>
+      <a href="../mascaras/index.html" class="cat-card"><div class="cat-card-icon">🫙</div><div class="cat-card-name">Máscaras Capilares</div><div class="cat-card-count">3 produtos</div><div class="cat-card-arrow">→</div></a>
+      <a href="../escovas/index.html" class="cat-card"><div class="cat-card-icon">💜</div><div class="cat-card-name">Escovas &amp; Pentes</div><div class="cat-card-count">0 produtos</div><div class="cat-card-arrow">→</div></a>
+      <a href="../extensoes/index.html" class="cat-card"><div class="cat-card-icon">💎</div><div class="cat-card-name">Extensões</div><div class="cat-card-count">0 produtos</div><div class="cat-card-arrow">→</div></a>
+    </div>
+  </div>
+</div>
+
+<div class="float-bar">
+  <p>📦 <b>Pagamento somente na entrega</b> — você só paga quando receber</p>
+  <a href="#produtos">Ver produtos</a>
+</div>
+<a class="wa" href="https://wa.me/+556281670981?text=Olá%2C%20vim%20do%20site%20Casa%20da%20Progressiva" target="_blank" title="Falar com atendente">💬</a>
+<footer><p>© 2025 Casa da Progressiva. Todos os direitos reservados. &nbsp;|&nbsp; <a href="https://wa.me/+556281670981">Atendimento via WhatsApp</a></p></footer>
+<script src="../../js/site-data.js"></script>
+</body>
+</html>

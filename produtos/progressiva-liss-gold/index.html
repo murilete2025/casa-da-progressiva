@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17972577231"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17972577231');
+</script>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Liss Gold Premium — Progressiva Sem Formol que Alisa e Trata | Casa da Progressiva</title>
+<meta name="description" content="Liss Gold Premium com Ácido Proliss. Sem formol, aprovada pela Anvisa. Alisa qualquer tipo de cabelo em metade do tempo. Pague somente na entrega!">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────
+   TOKENS DE DESIGN
+───────────────────────────────────────── */
+:root {
+  --ivory:    #f9f6f1;
+  --paper:    #f2ede5;
+  --linen:    #e8e0d4;
+  --stone:    #c4b9a8;
+  --warm:     #8c7b68;
+  --espresso: #3d2e20;
+  --ink:      #1e1510;
+  --sage:     #5a6b55;
+  --sage-lt:  #8fa887;
+  --gold:     #b08d57;
+  --gold-lt:  #cca96e;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'Jost', sans-serif;
+  --radius: 4px;
+  --max:    1080px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--ivory); color: var(--espresso); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+a   { color: inherit; text-decoration: none; }
+
+/* BARRA DE AVISO */
+.bar { background: var(--sage); color: #fff; text-align: center; padding: 11px 20px; font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; position: sticky; top: 0; z-index: 200; }
+.bar b { font-weight: 700; }
+
+/* HEADER + MENU CATEGORIAS */
+header{background:rgba(249,246,241,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--linen);position:sticky;top:36px;z-index:200;}
+.header-inner{max-width:var(--max);margin:0 auto;padding:18px 48px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.logo{font-family:var(--serif);font-size:1.35rem;font-weight:400;letter-spacing:.04em;color:var(--ink);white-space:nowrap;flex-shrink:0;}.logo em{color:var(--gold);font-style:italic;}
+.search-bar{flex:1;min-width:180px;display:flex;border:1px solid var(--linen);border-radius:6px;overflow:hidden;background:#fff;}
+.search-bar input{flex:1;border:none;outline:none;padding:10px 16px;font-size:.82rem;}
+.search-bar button{background:var(--ink);border:none;padding:0 18px;cursor:pointer;color:#fff;}
+.header-actions{display:flex;align-items:center;gap:16px;flex-shrink:0;flex-wrap:wrap;}
+.header-link{color:var(--warm);font-size:.75rem;font-weight:500;transition:color .25s;}
+.btn-header{background:var(--ink);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border-radius:var(--radius);transition:background .25s;}
+.btn-header:hover{background:var(--espresso);}
+nav.cat-nav{background:var(--ivory);border-bottom:1px solid var(--linen);}
+.cat-nav ul{max-width:var(--max);margin:0 auto;padding:0 48px;display:flex;list-style:none;overflow-x:auto;flex-wrap:wrap;}
+.cat-nav ul li a{display:block;padding:13px 20px;color:var(--warm);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:color .25s;}
+.cat-nav ul li a:hover{color:var(--ink);}
+
+/* HERO */
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 88vh; overflow: hidden; }
+.hero-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px 80px 80px; }
+.hero-eyebrow { font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+.hero h1 { font-family: var(--serif); font-size: clamp(2.8rem, 4.5vw, 4.2rem); font-weight: 300; line-height: 1.12; color: var(--ink); margin-bottom: 28px; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-desc { font-size: 1rem; line-height: 1.8; color: var(--warm); max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+.entrega-pill { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--sage); color: var(--sage); font-size: .82rem; font-weight: 500; letter-spacing: .05em; padding: 10px 20px; border-radius: 40px; margin-bottom: 36px; width: fit-content; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.btn-dark { background: var(--ink); color: #fff; font-size: .85rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 15px 36px; border-radius: var(--radius); transition: background .25s, transform .2s; white-space: nowrap; }
+.btn-dark:hover { background: var(--espresso); transform: translateY(-2px); }
+.btn-ghost { font-size: .82rem; color: var(--warm); font-weight: 400; letter-spacing: .04em; border-bottom: 1px solid var(--stone); padding-bottom: 2px; transition: color .2s; }
+.btn-ghost:hover { color: var(--ink); }
+.hero-image { background: var(--paper); position: relative; overflow: hidden; }
+.hero-image-inner { width: 100%; height: 100%; position: absolute; inset: 0; }
+.hero-image-inner img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.hero-placeholder { width: 100%; height: 100%; background: linear-gradient(160deg, #e8e0d4 0%, #c8b89a 100%); display: flex; align-items: center; justify-content: center; }
+.orb { width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #f5edd8, #c8a855); box-shadow: 0 30px 80px rgba(62,46,30,.2), inset 0 1px 0 rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center; position: relative; }
+.orb::after { content: ''; position: absolute; width: 90%; height: 90%; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); }
+.orb-text { text-align: center; }
+.orb-text p { font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: var(--espresso); line-height: 1.5; }
+.orb-text strong { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; display: block; color: var(--ink); margin-bottom: 4px; }
+.hero-tag { position: absolute; bottom: 40px; left: 40px; background: #fff; border-radius: 12px; padding: 16px 20px; box-shadow: 0 8px 32px rgba(62,46,30,.12); display: flex; align-items: center; gap: 12px; max-width: 220px; }
+.hero-tag-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.hero-tag p { font-size: .78rem; line-height: 1.5; color: var(--espresso); }
+.hero-tag b { font-weight: 600; }
+
+/* STRIP */
+.strip { border-top: 1px solid var(--linen); border-bottom: 1px solid var(--linen); background: var(--paper); display: flex; justify-content: center; flex-wrap: wrap; }
+.strip-item { display: flex; align-items: center; gap: 10px; padding: 18px 36px; font-size: .8rem; font-weight: 500; letter-spacing: .05em; color: var(--warm); border-right: 1px solid var(--linen); }
+.strip-item:last-child { border-right: none; }
+.strip-item svg { color: var(--sage); flex-shrink: 0; }
+
+/* BASE */
+.section { padding: 96px 48px; max-width: var(--max); margin: 0 auto; }
+.label { font-size: .7rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+.heading { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.18; color: var(--ink); margin-bottom: 16px; }
+.heading em { font-style: italic; color: var(--gold); }
+.sub { font-size: .95rem; line-height: 1.8; color: var(--warm); font-weight: 300; max-width: 520px; }
+
+/* STATS */
+.stats-section { background: var(--ink); }
+.stats-inner { max-width: var(--max); margin: 0 auto; padding: 80px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.stats-text .label { color: var(--gold-lt); }
+.stats-text .label::before { background: var(--gold-lt); }
+.stats-text .heading { color: #fff; }
+.stats-text .sub { color: rgba(255,255,255,.55); }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.stat-block { background: rgba(255,255,255,.04); padding: 36px 28px; border: 1px solid rgba(255,255,255,.08); transition: background .3s; }
+.stat-block:hover { background: rgba(255,255,255,.08); }
+.stat-num { font-family: var(--serif); font-size: 3.2rem; font-weight: 300; color: var(--gold-lt); line-height: 1; margin-bottom: 10px; }
+.stat-desc { font-size: .82rem; color: rgba(255,255,255,.55); line-height: 1.65; font-weight: 300; }
+
+/* BENEFÍCIOS */
+.benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--linen); border: 1px solid var(--linen); border-radius: 8px; overflow: hidden; margin-top: 56px; }
+.benefit { background: var(--ivory); padding: 40px 32px; transition: background .25s; }
+.benefit:hover { background: var(--paper); }
+.benefit-num { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--stone); margin-bottom: 20px; display: block; }
+.benefit h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink); margin-bottom: 10px; }
+.benefit p { font-size: .85rem; line-height: 1.75; color: var(--warm); font-weight: 300; }
+
+/* SEM FORMOL */
+.formol-section { background: var(--paper); }
+.formol-inner { max-width: var(--max); margin: 0 auto; padding: 96px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.formol-list { margin-top: 40px; }
+.formol-item { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--linen); align-items: flex-start; }
+.formol-item:last-child { border-bottom: none; }
+.formol-x { width: 28px; height: 28px; border-radius: 50%; border: 1px solid #c0392b; color: #c0392b; display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.formol-item h4 { font-size: .9rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.formol-item p { font-size: .84rem; line-height: 1.65; color: var(--warm); font-weight: 300; }
+.formol-right { padding-top: 16px; }
+.anvisa-badge { background: var(--ivory); border: 1px solid var(--linen); border-radius: 12px; padding: 32px; text-align: center; margin-bottom: 28px; }
+.anvisa-badge .icon { font-size: 2.5rem; margin-bottom: 12px; }
+.anvisa-badge p { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); font-style: italic; line-height: 1.5; }
+.anvisa-badge small { display: block; margin-top: 8px; font-size: .75rem; color: var(--warm); font-style: normal; font-family: var(--sans); }
+.natural-tag { background: var(--sage); color: #fff; border-radius: 12px; padding: 28px 32px; }
+.natural-tag h4 { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; margin-bottom: 8px; }
+.natural-tag p { font-size: .85rem; line-height: 1.7; opacity: .85; font-weight: 300; }
+
+/* PROVA SOCIAL */
+.social-section { background: var(--ivory); }
+.social-inner { max-width: var(--max); margin: 0 auto; padding: 96px 48px; }
+.testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+.testimonial { background: var(--paper); border: 1px solid var(--linen); border-radius: 12px; padding: 32px 28px; display: flex; flex-direction: column; gap: 20px; transition: box-shadow .3s, transform .3s; }
+.testimonial:hover { box-shadow: 0 12px 40px rgba(62,46,30,.09); transform: translateY(-3px); }
+.testimonial-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; }
+.testimonial-text { font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: var(--ink); line-height: 1.7; flex: 1; }
+.testimonial-text::before { content: '"'; font-size: 1.8rem; color: var(--gold); line-height: 0; vertical-align: -.4em; margin-right: 4px; }
+.testimonial-text::after  { content: '"'; font-size: 1.8rem; color: var(--gold); line-height: 0; vertical-align: -.4em; margin-left:  4px; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--linen); padding-top: 20px; }
+.testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; background: var(--linen); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.testimonial-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.testimonial-name { font-size: .88rem; font-weight: 600; color: var(--ink); display: block; }
+.testimonial-meta { font-size: .76rem; color: var(--warm); font-weight: 300; display: block; margin-top: 2px; }
+.testimonial-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(90,107,85,.1); color: var(--sage); font-size: .7rem; font-weight: 600; letter-spacing: .05em; padding: 4px 10px; border-radius: 20px; margin-left: auto; flex-shrink: 0; }
+.result-strip { margin-top: 56px; background: var(--paper); border: 1px solid var(--linen); border-radius: 12px; padding: 36px 40px; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+.result-strip-text { flex: 1; min-width: 240px; }
+.result-strip-text .label { margin-bottom: 12px; }
+.result-strip-text p { font-size: .9rem; line-height: 1.7; color: var(--warm); font-weight: 300; max-width: 420px; }
+.result-images { display: flex; gap: 16px; flex-shrink: 0; }
+.result-img-wrap { width: 140px; text-align: center; }
+.result-img-wrap span { display: block; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--stone); margin-bottom: 8px; }
+.result-img-wrap img { width: 140px; height: 160px; object-fit: cover; border-radius: 8px; border: 1px solid var(--linen); }
+.result-img-placeholder { width: 140px; height: 160px; background: var(--linen); border-radius: 8px; border: 2px dashed var(--stone); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--warm); font-size: .72rem; text-align: center; padding: 12px; }
+
+/* COMO FUNCIONA */
+.entrega-section { background: var(--ink); }
+.entrega-inner { max-width: var(--max); margin: 0 auto; padding: 96px 48px; text-align: center; }
+.entrega-inner .label { justify-content: center; color: var(--gold-lt); }
+.entrega-inner .label::before { background: var(--gold-lt); }
+.entrega-inner .heading { color: #fff; text-align: center; margin: 0 auto 16px; }
+.entrega-inner .sub { color: rgba(255,255,255,.5); text-align: center; margin: 0 auto 64px; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: rgba(255,255,255,.06); border-radius: 8px; overflow: hidden; margin-bottom: 56px; }
+.step { background: rgba(255,255,255,.03); padding: 44px 28px; text-align: center; transition: background .3s; }
+.step:hover { background: rgba(255,255,255,.07); }
+.step-num { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: rgba(176,141,87,.35); line-height: 1; margin-bottom: 16px; }
+.step h4 { font-size: .9rem; font-weight: 600; color: #fff; margin-bottom: 10px; }
+.step p { font-size: .8rem; color: rgba(255,255,255,.45); line-height: 1.65; font-weight: 300; }
+.entrega-note { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.7); font-size: .82rem; padding: 12px 24px; border-radius: 40px; margin-bottom: 40px; }
+
+/* PREÇOS */
+.pricing-section { padding: 96px 48px; }
+.pricing-inner { max-width: var(--max); margin: 0 auto; }
+.pricing-header { text-align: center; margin-bottom: 64px; }
+.pricing-header .sub { margin: 0 auto; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.card { border: 1px solid var(--linen); border-radius: 8px; overflow: hidden; transition: box-shadow .3s, transform .3s; background: #fff; }
+.card:hover { box-shadow: 0 16px 56px rgba(62,46,30,.1); transform: translateY(-4px); }
+.card.featured { border-color: var(--gold); box-shadow: 0 8px 40px rgba(176,141,87,.18); }
+.card-top { background: var(--paper); padding: 32px 28px 24px; border-bottom: 1px solid var(--linen); position: relative; }
+.card.featured .card-top { background: var(--ink); border-bottom-color: rgba(255,255,255,.1); }
+.feat-label { position: absolute; top: 20px; right: 20px; background: var(--gold); color: var(--ink); font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 5px 12px; border-radius: 40px; }
+.card-qty { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); margin-bottom: 12px; }
+.card.featured .card-qty { color: rgba(255,255,255,.45); }
+.card-price { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--ink); line-height: 1; }
+.card.featured .card-price { color: #fff; }
+.card-price sup { font-size: 1.1rem; vertical-align: super; margin-right: 2px; }
+.card-saving { display: inline-block; background: rgba(90,107,85,.12); color: var(--sage); font-size: .72rem; font-weight: 600; padding: 4px 12px; border-radius: 40px; margin-top: 10px; }
+.card.featured .card-saving { background: rgba(176,141,87,.2); color: var(--gold-lt); }
+.card-body { padding: 28px; }
+.card-entrega { display: flex; align-items: center; gap: 8px; background: rgba(90,107,85,.08); border-radius: 6px; padding: 10px 14px; font-size: .78rem; font-weight: 600; color: var(--sage); margin-bottom: 20px; }
+.card-list { list-style: none; margin-bottom: 24px; }
+.card-list li { display: flex; gap: 10px; font-size: .82rem; color: var(--warm); padding: 7px 0; border-bottom: 1px solid var(--linen); font-weight: 300; }
+.card-list li:last-child { border-bottom: none; }
+.card-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+.btn-card { display: block; text-align: center; background: var(--ink); color: #fff; font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 15px; border-radius: var(--radius); transition: background .25s; }
+.btn-card:hover { background: var(--espresso); }
+.card.featured .btn-card { background: var(--gold); color: var(--ink); }
+.card.featured .btn-card:hover { background: var(--gold-lt); }
+.pricing-note { text-align: center; margin-top: 36px; font-size: .82rem; color: var(--warm); font-weight: 300; line-height: 1.8; }
+
+/* FAQ */
+.faq-section { background: var(--paper); }
+.faq-inner { max-width: var(--max); margin: 0 auto; padding: 96px 48px; display: grid; grid-template-columns: 300px 1fr; gap: 96px; }
+.faq-header { position: sticky; top: 100px; align-self: start; }
+.faq-item { border-bottom: 1px solid var(--linen); }
+.faq-q { width: 100%; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 22px 0; font-family: var(--sans); font-size: .92rem; font-weight: 500; color: var(--ink); text-align: left; gap: 16px; }
+.faq-q span { font-size: 1.4rem; font-weight: 300; color: var(--stone); flex-shrink: 0; transition: transform .3s; }
+.faq-item.open .faq-q span { transform: rotate(45deg); color: var(--gold); }
+.faq-a { font-size: .88rem; line-height: 1.8; color: var(--warm); font-weight: 300; max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; }
+.faq-item.open .faq-a { max-height: 400px; padding-bottom: 24px; }
+
+/* RODAPÉ CTA */
+.footer-cta { text-align: center; padding: 96px 48px; background: var(--ivory); }
+.footer-cta .heading { margin: 0 auto 16px; }
+.footer-cta .sub { margin: 0 auto 36px; }
+.entrega-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--paper); border: 1px solid var(--linen); padding: 10px 20px; border-radius: 40px; font-size: .8rem; font-weight: 500; color: var(--warm); margin-bottom: 32px; }
+
+/* RODAPÉ */
+footer { background: var(--ink); color: rgba(255,255,255,.4); text-align: center; padding: 40px 48px; font-size: .78rem; line-height: 1.9; }
+.footer-logo { font-family: var(--serif); font-size: 1.2rem; color: rgba(255,255,255,.7); font-weight: 300; margin-bottom: 16px; }
+.footer-logo em { color: var(--gold-lt); font-style: italic; }
+footer a { color: rgba(255,255,255,.6); border-bottom: 1px solid rgba(255,255,255,.2); }
+
+/* BARRA FLUTUANTE */
+.float-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--espresso); color: #fff; display: flex; align-items: center; justify-content: center; gap: 24px; padding: 14px 24px; z-index: 100; font-size: .82rem; }
+.float-bar p { font-weight: 300; opacity: .85; }
+.float-bar b { font-weight: 600; }
+.float-bar a { background: var(--gold); color: var(--ink); font-weight: 700; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; padding: 10px 24px; border-radius: var(--radius); white-space: nowrap; flex-shrink: 0; transition: background .2s; }
+.float-bar a:hover { background: var(--gold-lt); }
+
+/* WHATSAPP */
+.wa { position: fixed; bottom: 72px; right: 24px; width: 52px; height: 52px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 20px rgba(37,211,102,.4); z-index: 99; transition: transform .2s; }
+.wa:hover { transform: scale(1.08); }
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-text { padding: 60px 32px; }
+  .hero-image { min-height: 300px; }
+  .stats-inner { grid-template-columns: 1fr; gap: 40px; }
+  .formol-inner { grid-template-columns: 1fr; gap: 40px; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .cards { grid-template-columns: 1fr; }
+  .testimonials { grid-template-columns: 1fr; }
+  .faq-inner { grid-template-columns: 1fr; gap: 40px; }
+  .faq-header { position: static; }
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
+  .float-bar { flex-direction: column; gap: 10px; padding: 12px 16px; }
+  .result-strip { flex-direction: column; gap: 28px; }
+  .result-images { justify-content: center; }
+}
+@media (max-width: 520px) {
+  .strip { flex-direction: column; }
+  .strip-item { border-right: none; border-bottom: 1px solid var(--linen); }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .cards { gap: 16px; }
+  .hero-text { padding: 48px 20px; }
+  .section, .pricing-section, .social-inner,
+  .entrega-inner, .faq-inner, .formol-inner, .stats-inner { padding-left: 20px; padding-right: 20px; }
+
+  /* Header mobile */
+  .header-inner { padding: 12px 16px; gap: 12px; }
+  .logo { font-size: 1.1rem; }
+  .search-bar { display: none; }
+  .header-link { display: none; }
+  .btn-header { padding: 8px 12px; font-size: .68rem; }
+
+  /* Hero mobile */
+  .hero h1 { font-size: 2rem; }
+
+  /* Nav mobile */
+  .cat-nav ul { padding: 0 12px; }
+  .cat-nav ul li a { padding: 10px 10px; font-size: .68rem; }
+
+  /* Float bar */
+  .float-bar { padding: 10px 14px; font-size: .78rem; }
+  .wa { bottom: 76px; right: 14px; width: 46px; height: 46px; font-size: 1.3rem; }
+
+  /* Footer */
+  footer { padding: 36px 20px; }
+  .footer-cta { padding: 52px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     BARRA DE AVISO NO TOPO
+     ════════════════════════════════════════════════ -->
+<div class="bar">
+  <b>Pagamento somente na entrega</b> &nbsp;·&nbsp; Frete grátis para todo o Brasil &nbsp;·&nbsp; Aprovada pela Anvisa
+</div>
+
+<!-- ════════════════════════════════════════════════
+     NAVEGAÇÃO
+     ════════════════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <a href="../../index.html" class="logo">Casa da <em>Progressiva</em></a>
+    <div class="search-bar"><input type="text" placeholder="Busque por produto…"><button><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button></div>
+    <div class="header-actions">
+      <a href="https://wa.me/+5562981670981" class="header-link" target="_blank">Atendimento</a>
+      <a href="../../index.html#produtos" class="btn-header">Ver produtos</a>
+      <a href="#ofertas" class="btn-header">Pedir agora</a>
+    </div>
+  </div>
+</header>
+<nav class="cat-nav">
+  <ul>
+    <li><a href="../../index.html#produtos">Todos</a></li>
+    <li><a href="../../categorias/progressivas/index.html">Progressivas</a></li>
+    <li><a href="../../categorias/mascaras/index.html">Máscaras Capilares</a></li>
+    <li><a href="../../categorias/escovas/index.html">Escovas &amp; Pentes</a></li>
+    <li><a href="../../categorias/tratamentos/index.html">Tratamentos</a></li>
+    <li><a href="../../categorias/extensoes/index.html">Extensões</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════ -->
+<section class="hero">
+
+  <div class="hero-text">
+    <div class="hero-eyebrow">Ácido Proliss — Protein Treatment Premium</div>
+    <h1>Liso de salão,<br>sem formol e em<br><em>metade do tempo.</em></h1>
+    <p class="hero-desc">
+      A Liss Gold Premium alisa qualquer tipo de cabelo, hidrata profundamente e elimina o frizz com a força do Ácido Proliss — sem formol, sem cheiro forte e com resultado desde a primeira aplicação.
+    </p>
+    <div class="entrega-pill">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="1" y="3" width="15" height="13" rx="1"/>
+        <path d="M16 8h4l3 5v4h-7V8z"/>
+        <circle cx="5.5" cy="18.5" r="2.5"/>
+        <circle cx="18.5" cy="18.5" r="2.5"/>
+      </svg>
+      Você paga somente na entrega — sem riscos
+    </div>
+    <div class="hero-actions">
+      <a href="#ofertas" class="btn-dark">Quero meu cabelo liso</a>
+      <a href="#como-funciona" class="btn-ghost">Como funciona o pagamento?</a>
+    </div>
+  </div>
+
+  <!-- Coluna de imagem hero -->
+  <div class="hero-image" style="position:relative;min-height:88vh;">
+    <div class="hero-image-inner">
+
+      <!-- ╔═══════════════════════════════════════════════════════════════╗
+           ║  IMAGEM HERO — SUBSTITUA                                      ║
+           ║  Arquivo: images/hero-produto.jpg                             ║
+           ║  Tamanho sugerido: 900×1100 px  |  Orientação: retrato        ║
+           ║  Conteúdo: foto do pote da Liss Gold em destaque              ║
+           ║                                                                ║
+           ║  Para ativar: remova o comentário da tag <img> abaixo          ║
+           ║  e delete o bloco <div class="hero-placeholder">               ║
+           ╚═══════════════════════════════════════════════════════════════╝ -->
+      <img src="images/capa.jpeg" alt="Liss Gold Premium — pote 1kg Ácido Proliss" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <!-- Placeholder visual — exibido quando capa.jpg não existe -->
+      <div class="hero-placeholder">
+        <div class="orb">
+          <div class="orb-text">
+            <strong>Liss Gold</strong>
+            <p>Ácido Proliss<br>Protein Treatment</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="hero-tag">
+      <div class="hero-tag-icon">✓</div>
+      <p><b>Aprovada pela Anvisa</b><br>Segura e registrada</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════
+     STRIP DE SELOS DE CONFIANÇA
+     ════════════════════════════════════════════════ -->
+<div class="strip">
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Sem formol
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    Paga na entrega
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><line x1="16" y1="21" x2="16" y2="3"/><line x1="8" y1="21" x2="8" y2="3"/></svg>
+    Frete grátis
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Resultado na 1.ª aplicação
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    +2.137 clientes satisfeitas
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     STATS / NÚMEROS
+     ════════════════════════════════════════════════ -->
+<div class="stats-section">
+  <div class="stats-inner">
+    <div class="stats-text">
+      <div class="label">Por que a Liss Gold?</div>
+      <h2 class="heading">Números que<br><em>comprovam</em> o resultado</h2>
+      <p class="sub">Uma fórmula profissional com Ácido Proliss que entrega liso duradouro, tratamento intenso e brilho dourado — sem comprometer a saúde dos seus fios.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-block">
+        <div class="stat-num">½</div>
+        <div class="stat-desc">Do tempo de aplicação em relação às progressivas tradicionais — de 4h para apenas 2h</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">10</div>
+        <div class="stat-desc">Cabelos rendidos com apenas 1 kg de produto</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">0%</div>
+        <div class="stat-desc">Formol — fórmula 100% livre de substâncias agressivas</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">2137</div>
+        <div class="stat-desc">Clientes satisfeitas em todo o Brasil com resultado comprovado</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     BENEFÍCIOS
+     ════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="label">O que você ganha</div>
+  <h2 class="heading">Tudo que a Liss Gold<br>faz pelos seus <em>fios</em></h2>
+  <p class="sub">A fórmula com Ácido Proliss é um tratamento profissional que alisa, hidrata e protege em uma única aplicação.</p>
+  <div class="benefits-grid">
+    <div class="benefit">
+      <span class="benefit-num">01</span>
+      <h3>Alisa qualquer tipo de cabelo</h3>
+      <p>Do liso ao crespo, a Liss Gold nivela e alisa todos os tipos de fios com resultado uniforme e duradouro.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-num">02</span>
+      <h3>Metade do tempo de aplicação</h3>
+      <p>Tecnologia Ácido Proliss reduz o processo de 4 horas para apenas 2 horas — sem abrir mão do resultado profissional.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-num">03</span>
+      <h3>Trata enquanto alisa</h3>
+      <p>Diferente das progressivas comuns, a Liss Gold hidrata e reconstrói os fios durante o processo de alisamento.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-num">04</span>
+      <h3>Brilho dourado e intenso</h3>
+      <p>Fios com aparência saudável, sedosa e luminosa — o brilho dourado que só a Liss Gold entrega.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-num">05</span>
+      <h3>Alto rendimento — 1 kg, até 10 cabelos</h3>
+      <p>O pote de 1 kg rende até 10 aplicações completas, tornando o investimento muito mais econômico.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-num">06</span>
+      <h3>Sem cheiro forte e sem ardor</h3>
+      <p>A fórmula sem formol não agride o couro cabeludo, não causa ardor nos olhos e pode ser usada em casa com segurança.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     SEM FORMOL / SEGURANÇA
+     ════════════════════════════════════════════════ -->
+<div class="formol-section">
+  <div class="formol-inner">
+    <div>
+      <div class="label">Por que evitar o formol?</div>
+      <h2 class="heading">O que o formol<br>faz com seus <em>fios</em></h2>
+      <div class="formol-list">
+        <div class="formol-item">
+          <div class="formol-x">✕</div>
+          <div>
+            <h4>Danos permanentes ao cabelo</h4>
+            <p>O formol resseca, queima e fragiliza os fios, causando quebra e queda excessiva ao longo do tempo.</p>
+          </div>
+        </div>
+        <div class="formol-item">
+          <div class="formol-x">✕</div>
+          <div>
+            <h4>Irritação no couro cabeludo</h4>
+            <p>Provoca coceira, vermelhidão e dermatite, desestabilizando o couro cabeludo e acelerando a queda.</p>
+          </div>
+        </div>
+        <div class="formol-item">
+          <div class="formol-x">✕</div>
+          <div>
+            <h4>Problemas respiratórios</h4>
+            <p>O formol é um irritante respiratório que pode causar asma, tosse e falta de ar durante a aplicação.</p>
+          </div>
+        </div>
+        <div class="formol-item">
+          <div class="formol-x">✕</div>
+          <div>
+            <h4>Riscos graves à saúde</h4>
+            <p>A exposição frequente ao formol está associada ao aumento do risco de doenças sérias a longo prazo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="formol-right">
+      <div class="anvisa-badge">
+        <div class="icon">🛡️</div>
+        <p>"Produto registrado e aprovado pela Anvisa, com fórmula segura e livre de formol."</p>
+        <small>Aprovação Anvisa — Registro vigente</small>
+      </div>
+      <div class="natural-tag">
+        <h4>Fórmula com Ácido Proliss — Protein Treatment</h4>
+        <p>Tecnologia profissional que alisa sem agredir. Trata enquanto nivela os fios, entregando liso, brilho e hidratação desde a primeira aplicação.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     PROVA SOCIAL — DEPOIMENTOS
+     ════════════════════════════════════════════════ -->
+<div class="social-section">
+  <div class="social-inner">
+    <div class="label">O que nossas clientes dizem</div>
+    <h2 class="heading">Mais de 2.137 mulheres<br>já <em>transformaram</em> o cabelo</h2>
+    <p class="sub">Clientes em todo o Brasil aprovam o resultado profissional da Liss Gold em casa.</p>
+
+    <div class="testimonials">
+
+      <!-- ── DEPOIMENTO 1 ── -->
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">Nunca acreditei que ia conseguir um resultado de salão em casa. A Liss Gold alisou meu cabelo crespo em 2 horas e ficou com um brilho incrível. Sem cheiro, sem ardor. Simplesmente perfeito!</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="images/prova1.webp" alt="Foto de Mariana C." onerror="this.parentElement.innerHTML='👩🏾'">
+          </div>
+          <div>
+            <span class="testimonial-name">Mariana C.</span>
+            <span class="testimonial-meta">Fortaleza — CE</span>
+          </div>
+          <span class="testimonial-badge">✓ Compra verificada</span>
+        </div>
+      </div>
+
+      <!-- ── DEPOIMENTO 2 ── -->
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">Comprei com medo porque paguei na entrega, mas quando vi o produto chegou certinho e o resultado foi além do esperado. Cabelo liso, hidratado e com aquele brilho dourado que ela promete. Amei!</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="images/prova2.webp" alt="Foto de Tatiane R." onerror="this.parentElement.innerHTML='👩🏻'">
+          </div>
+          <div>
+            <span class="testimonial-name">Tatiane R.</span>
+            <span class="testimonial-meta">São Paulo — SP</span>
+          </div>
+          <span class="testimonial-badge">✓ Compra verificada</span>
+        </div>
+      </div>
+
+      <!-- ── DEPOIMENTO 3 ── -->
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">Uso a Liss Gold há 3 meses e não troco por nada. Rende muito — com 1 kg já fiz várias aplicações. O frizz desapareceu e meu cabelo está mais saudável do que antes. Recomendo demais!</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="images/prova3.webp" alt="Foto de Alessandra M." onerror="this.parentElement.innerHTML='👩🏽'">
+          </div>
+          <div>
+            <span class="testimonial-name">Alessandra M.</span>
+            <span class="testimonial-meta">Belo Horizonte — MG</span>
+          </div>
+          <span class="testimonial-badge">✓ Compra verificada</span>
+        </div>
+      </div>
+
+    </div><!-- /testimonials -->
+
+    <!-- Faixa antes e depois -->
+    <div class="result-strip">
+      <div class="result-strip-text">
+        <div class="label">Resultado real</div>
+        <h3 style="font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--ink);margin-bottom:12px;">
+          Antes e <em style="font-style:italic;color:var(--gold);">depois</em>
+        </h3>
+        <p>Uma única aplicação em casa. O Ácido Proliss transforma fios crespos, ondulados ou com frizz em cabelo liso, brilhante e visivelmente mais saudável.</p>
+      </div>
+      <div class="result-images">
+
+        <div class="result-img-wrap">
+          <span>Antes</span>
+          <img src="images/prova3.webp" alt="Cabelo antes da Liss Gold">
+        </div>
+
+        <div class="result-img-wrap">
+          <span>Depois</span>
+          <img src="images/prova4.webp" alt="Cabelo depois da Liss Gold">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     COMO FUNCIONA O PAGAMENTO
+     ════════════════════════════════════════════════ -->
+<div class="entrega-section" id="como-funciona">
+  <div class="entrega-inner">
+    <div class="label">Sem risco para você</div>
+    <h2 class="heading">Como funciona o<br><em>pagamento na entrega?</em></h2>
+    <p class="sub">É simples, seguro e você não precisa de cartão antecipado nem de cadastro complicado.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><h4>Escolha sua oferta</h4><p>Selecione a quantidade de potes que deseja e clique em pedir agora.</p></div>
+      <div class="step"><div class="step-num">02</div><h4>Seu pedido é enviado</h4><p>Processamos e despachamos o produto direto para o seu endereço, com frete grátis.</p></div>
+      <div class="step"><div class="step-num">03</div><h4>O entregador chega</h4><p>Você recebe o pacote em casa. Confira o produto com calma antes de qualquer coisa.</p></div>
+      <div class="step"><div class="step-num">04</div><h4>Aí sim você paga</h4><p>Pague somente no momento da entrega — em dinheiro ou no cartão na maquininha.</p></div>
+    </div>
+    <div class="entrega-note">🔒 Você não fornece dados do cartão antecipadamente. Zero risco, zero burocracia.</div>
+    <a href="#ofertas" class="btn-dark">Fazer meu pedido agora</a>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     OFERTAS / PREÇOS
+     ════════════════════════════════════════════════ -->
+<section class="pricing-section" id="ofertas">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <div class="label" style="justify-content:center;">Escolha sua oferta</div>
+      <h2 class="heading" style="text-align:center;">Selecione a quantidade<br>ideal para <em>você</em></h2>
+      <p class="sub">Frete grátis para todo o Brasil. <b>Pagamento somente na entrega.</b> Sem taxa antecipada.</p>
+    </div>
+
+    <div class="cards">
+
+      <!-- ══════════════════════════════════════════
+           CARD — 1 POTE (1 KG)
+           ══════════════════════════════════════════ -->
+      <div class="card">
+        <div class="card-top">
+          <div class="card-qty">1 pote — até 10 aplicações</div>
+          <!-- SUBSTITUA: troque 247 pelo preço do 1 pote (ex: 149) -->
+          <div class="card-price"><sup>R$</sup>247,00</div>
+        </div>
+        <div class="card-body">
+          <div class="card-entrega">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Paga somente na entrega
+          </div>
+          <ul class="card-list">
+            <li>Frete grátis</li>
+            <li>Aprovada pela Anvisa</li>
+            <li>Sem formol</li>
+            <li>Resultado na 1.ª aplicação</li>
+          </ul>
+          <!-- SUBSTITUA: cole o link de checkout do 1 pote abaixo -->
+          <a href="https://entrega.logzz.com.br/pay/memyo2geq/eqkgn-1unidadepadrao" class="btn-card">Pedir agora</a>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+           CARD — 3 POTES (DESTAQUE / MAIS VENDIDO)
+           ══════════════════════════════════════════ -->
+      <div class="card featured">
+        <div class="card-top">
+          <div class="feat-label">Mais vendido</div>
+          <div class="card-qty">3 potes — até 30 aplicações</div>
+          <!-- SUBSTITUA: troque 00 pelo preço total dos 3 potes (ex: 387) -->
+          <div class="card-price"><sup>R$</sup>447,00</div>
+          <!-- SUBSTITUA: informe a economia total abaixo -->
+          <div class="card-saving">Economia de R$ 294,00</div>
+        </div>
+        <div class="card-body">
+          <div class="card-entrega">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Paga somente na entrega
+          </div>
+          <ul class="card-list">
+            <li>Frete grátis</li>
+            <li>Aprovada pela Anvisa</li>
+            <li>Sem formol</li>
+            <li>Resultado na 1.ª aplicação</li>
+            <li>Maior economia por pote</li>
+          </ul>
+          <!-- SUBSTITUA: cole o link de checkout dos 3 potes abaixo -->
+          <a href="https://entrega.logzz.com.br/pay/memyo2geq/3-superpromo" class="btn-card">Pedir agora</a>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+           CARD — 2 POTES
+           ══════════════════════════════════════════ -->
+      <div class="card">
+        <div class="card-top">
+          <div class="card-qty">2 potes — até 20 aplicações</div>
+          <!-- SUBSTITUA: troque 00 pelo preço total dos 2 potes (ex: 269) -->
+          <div class="card-price"><sup>R$</sup>297,00</div>
+        </div>
+        <div class="card-body">
+          <div class="card-entrega">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Paga somente na entrega
+          </div>
+          <ul class="card-list">
+            <li>Frete grátis</li>
+            <li>Aprovada pela Anvisa</li>
+            <li>Sem formol</li>
+            <li>Resultado na 1.ª aplicação</li>
+            <li>Para mais tempo de uso</li>
+          </ul>
+          <!-- SUBSTITUA: cole o link de checkout dos 2 potes abaixo -->
+          <a href="https://entrega.logzz.com.br/pay/memyo2geq/2unidadepadraopromo" class="btn-card">Pedir agora</a>
+        </div>
+      </div>
+
+    </div><!-- /cards -->
+
+    <p class="pricing-note">
+      🔐 Você não precisa informar dados do cartão agora.<br>
+      <b>O pagamento é feito somente quando o entregador chegar na sua porta.</b>
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+     ════════════════════════════════════════════════ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="label">Dúvidas frequentes</div>
+      <h2 class="heading">Perguntas que<br><em>mais recebemos</em></h2>
+    </div>
+    <div>
+      <div class="faq-item">
+        <button class="faq-q">Posso realmente pagar só na entrega?<span>+</span></button>
+        <div class="faq-a">Sim! Trabalhamos 100% com pagamento na entrega. Você não paga nada antecipado, nem precisa informar dados do cartão. O entregador chega, você confere o produto e só então paga — em dinheiro ou no cartão na maquininha.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">A Liss Gold tem formol?<span>+</span></button>
+        <div class="faq-a">Não. A Liss Gold Premium é completamente livre de formol. A fórmula com Ácido Proliss alisa e trata os fios sem usar substâncias agressivas, sem causar ardor nos olhos e sem cheiro forte durante a aplicação.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Funciona em todos os tipos de cabelo?<span>+</span></button>
+        <div class="faq-a">Sim! A Liss Gold alisa qualquer tipo de cabelo — do liso ao crespo. Também é compatível com cabelos coloridos, descoloridos ou que já tenham recebido outras químicas anteriores.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Quanto tempo leva a aplicação?<span>+</span></button>
+        <div class="faq-a">Graças à tecnologia Ácido Proliss, o tempo de aplicação é reduzido pela metade — de até 4 horas nas progressivas tradicionais para apenas 2 horas com a Liss Gold, sem perder a qualidade do resultado.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Quantas aplicações rende cada pote?<span>+</span></button>
+        <div class="faq-a">Cada pote de 1 kg rende em média até 10 aplicações completas, dependendo do comprimento e do volume do cabelo. É um dos produtos de maior rendimento disponíveis no mercado.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Precisa de chapinha para funcionar?<span>+</span></button>
+        <div class="faq-a">Sim, o uso da chapinha após o enxágue é recomendado para selar e potencializar o resultado. A fórmula é termoativada e a chapinha garante um liso mais duradouro e intenso.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">O frete é realmente grátis?<span>+</span></button>
+        <div class="faq-a">Sim. O frete é 100% grátis para todo o Brasil, sem taxas escondidas. Você paga apenas o valor do produto, somente no momento da entrega.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     RODAPÉ CTA
+     ════════════════════════════════════════════════ -->
+<div class="footer-cta">
+  <div class="label" style="justify-content:center;">Sem risco para você</div>
+  <h2 class="heading">Pronta para transformar<br>seu <em>cabelo em casa?</em></h2>
+  <p class="sub">Receba em casa, confira com calma e pague somente quando o produto chegar na sua porta.</p>
+  <div class="entrega-badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    Pagamento somente na entrega
+  </div>
+  <br>
+  <a href="#ofertas" class="btn-dark">Escolher minha oferta agora</a>
+  <p style="margin-top:16px;font-size:.78rem;color:var(--stone);font-weight:300;">Frete grátis · Sem cartão antecipado · Aprovada pela Anvisa</p>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     RODAPÉ
+     ════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Liss Gold <em>Premium</em></div>
+  <div>
+    <p>Este site não faz parte do Facebook Inc. nem é endossado pelo Facebook.</p>
+    <!-- SUBSTITUA: troque NUMERO_WHATSAPP pelo número com DDD, sem espaços (ex: 5588999642474) -->
+    <p>© 2025 Casa da Progressiva. Todos os direitos reservados. &nbsp;|&nbsp; <a href="https://wa.me/NUMERO_WHATSAPP">Atendimento via WhatsApp</a></p>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════════
+     BARRA FLUTUANTE (FIXA NO RODAPÉ)
+     ════════════════════════════════════════════════ -->
+<div class="float-bar">
+  <p>📦 <b>Pagamento somente na entrega</b> — você só paga quando receber o produto em casa</p>
+  <a href="#ofertas">Pedir agora</a>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     BOTÃO WHATSAPP FLUTUANTE
+     SUBSTITUA: troque NUMERO_WHATSAPP pelo número com DDD (ex: 5588999642474)
+     ════════════════════════════════════════════════ -->
+<a class="wa"
+   href="https://wa.me/NUMERO_WHATSAPP?text=Olá%2C%20vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Liss%20Gold%20Premium"
+   target="_blank"
+   title="Falar com atendente">💬</a>
+
+<script>
+  // Accordion do FAQ
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+<script src="../../js/site-data.js"></script>
+</body>
+</html>
