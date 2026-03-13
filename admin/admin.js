@@ -112,11 +112,76 @@ function nav(section) {
   document.getElementById('topbar-title').textContent = SECTION_TITLES[section] || section;
   document.getElementById('topbar-add-btn').style.display = section === 'products' ? 'flex' : 'none';
 
-  if (section === 'dashboard')    renderDashboard();
-  if (section === 'products')     renderProducts();
-  if (section === 'categories')   renderCategories();
-  if (section === 'orders')       renderOrders();
-  if (section === 'home-editor')  renderHomeEditor();
+  switch (section) {
+    case 'dashboard':      renderDashboard(); break;
+    case 'products':       renderProducts(); break;
+    case 'categories':     renderCategories(); break;
+    case 'orders':         renderOrders(); break;
+    case 'home-editor':    renderHomeEditor(); break;
+    case 'testimonials':   renderTestimonials(); break;
+    case 'integrations':   renderIntegrations(); break;
+    case 'store-settings': renderStoreSettings(); break;
+    case 'settings':       renderSettings(); break;
+  }
+}
+
+async function renderIntegrations() {
+    checkMPConnection();
+}
+
+async function checkMPConnection() {
+    const statusEl = document.getElementById('mp-status');
+    const modeEl = document.getElementById('mp-mode');
+    
+    statusEl.textContent = 'Verificando...';
+    statusEl.className = 'int-status';
+
+    try {
+        const res = await fetch(`${API_URL}/payment/config`);
+        const config = await res.json();
+        
+        if (config.enabled) {
+            statusEl.textContent = 'CONECTADO (' + config.publicKey + ')';
+            statusEl.classList.add('connected');
+            modeEl.textContent = 'Modo: ' + config.mode;
+        } else {
+            statusEl.textContent = 'NÃO CONECTADO (Token ausente no .env)';
+            modeEl.textContent = 'Modo: --';
+        }
+    } catch (err) {
+        statusEl.textContent = 'ERRO DE CONEXÃO';
+        modeEl.textContent = 'Erro: ' + err.message;
+    }
+}
+
+async function generateMPLink(offerNum) {
+    const title = document.getElementById(`pm-offer${offerNum}-title`).value.trim();
+    const price = document.getElementById(`pm-offer${offerNum}-price`).value.trim().replace('R$', '').replace(/\s/g, '').replace(',', '.');
+    const linkInput = document.getElementById(`pm-offer${offerNum}-link`);
+
+    if (!title || !price || isNaN(parseFloat(price))) {
+        alert('Por favor, preencha o Título e o Preço da oferta antes de gerar o link.');
+        return;
+    }
+
+    try {
+        showToast('Gerando link do Mercado Pago...', 'info');
+        const res = await fetch(`${API_URL}/payment/create-preference`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, price: parseFloat(price) })
+        });
+        const data = await res.json();
+        if (data.url) {
+            linkInput.value = data.url;
+            showToast('Link do Mercado Pago gerado!', 'success');
+        } else {
+            throw new Error(data.error || 'Erro desconhecido');
+        }
+    } catch (err) {
+        console.error(err);
+        alert('Erro ao gerar link: ' + err.message);
+    }
 }
 
 // ──────────────────────────────────────────────

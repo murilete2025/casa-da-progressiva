@@ -452,3 +452,15 @@ select.form-control { height: 40px; }
   transition: all .2s;
 }
 .view-site-btn:hover { background: rgba(176,141,87,.08); }
+
+/* ── INTEGRAÇÕES ── */
+.integrations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.integration-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; }
+.int-header { display: flex; gap: 15px; align-items: center; margin-bottom: 20px; }
+.int-logo { width: 48px; height: 48px; background: #009ee3; color: #fff; font-weight: 800; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+.int-info h3 { font-size: 1rem; margin-bottom: 2px; }
+.int-info p { font-size: .78rem; color: var(--text2); }
+.int-status { font-size: .72rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,.05); display: inline-block; margin-bottom: 15px; }
+.int-status.connected { color: var(--success); background: rgba(76,175,138,.1); }
+.int-details p { font-size: .8rem; color: var(--text2); margin-bottom: 4px; }
+.int-footer { margin-top: auto; padding-top: 20px; }
